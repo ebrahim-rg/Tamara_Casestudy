@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Framework 4 — Announcement Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:#0A0E1A;--green:#00A86B;--dark-green:#007A4D;
+    --white:#FFFFFF;--gold:#F5A623;--grey:#8A9BB0;
+    --card:#141B2D;--border:#1E2D45;
+    --red:#EF4444;--blue:#3B82F6;--orange:#F97316;--purple:#A855F7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;font-size:13px;padding:40px;}
+  h1{font-size:28px;font-weight:700;color:var(--green);margin-bottom:4px;}
+  .sub{font-size:13px;color:var(--grey);margin-bottom:24px;}
+  .instruction{background:var(--card);border-left:4px solid var(--green);padding:14px 18px;margin-bottom:28px;font-size:13px;color:var(--grey);line-height:1.6;}
+  h2{font-size:16px;font-weight:700;color:var(--white);margin:28px 0 10px;}
+
+  /* Phase cards */
+  .phase{background:var(--card);border:1px solid var(--border);border-radius:6px;margin-bottom:20px;overflow:hidden;}
+  .phase-header{display:flex;align-items:center;gap:14px;padding:14px 20px;}
+  .phase-num{font-size:28px;font-weight:700;color:var(--gold);min-width:36px;}
+  .phase-title{font-size:17px;font-weight:700;color:var(--white);}
+  .phase-timing{font-size:12px;color:var(--grey);margin-top:2px;}
+  .phase-body{padding:0 20px 16px;}
+
+  /* Checklist */
+  .checklist{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+  .checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--white);line-height:1.5;}
+  .check-box{width:16px;height:16px;border:1.5px solid var(--green);border-radius:3px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;}
+  .check-box.critical{border-color:var(--gold);}
+  .critical-label{background:var(--gold);color:#0A0E1A;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;margin-left:6px;flex-shrink:0;}
+  .owner-tag{background:var(--card);border:1px solid var(--border);font-size:10px;color:var(--grey);padding:1px 7px;border-radius:10px;margin-left:6px;flex-shrink:0;}
+
+  /* Day-of sequence */
+  .sequence-row{display:flex;align-items:flex-start;gap:16px;margin-bottom:12px;}
+  .time-block{min-width:80px;font-size:15px;font-weight:700;color:var(--gold);}
+  .seq-content{flex:1;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 14px;}
+  .seq-title{font-size:13px;font-weight:700;color:var(--white);}
+  .seq-sub{font-size:12px;color:var(--grey);margin-top:3px;line-height:1.4;}
+  .seq-critical{border-color:var(--gold)!important;background:rgba(245,166,35,0.07)!important;}
+
+  /* 15-min window */
+  .window-box{background:rgba(245,166,35,0.08);border:1.5px solid var(--gold);border-radius:6px;padding:18px 22px;margin:16px 0;}
+  .window-title{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:12px;}
+  .window-step{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
+  .window-min{min-width:60px;font-size:13px;font-weight:700;color:var(--gold);}
+  .window-action{font-size:13px;color:var(--white);line-height:1.4;}
+  .window-owner{font-size:11px;color:var(--grey);margin-top:2px;}
+
+  /* Tables */
+  table{border-collapse:collapse;width:100%;margin-bottom:12px;}
+  thead tr{background:var(--green);}
+  thead th{color:#fff;font-weight:700;font-size:12px;padding:8px 12px;text-align:left;border:1px solid var(--border);}
+  tbody tr:nth-child(odd){background:var(--card);}
+  tbody tr:nth-child(even){background:var(--bg);}
+  tbody td{color:var(--white);padding:7px 12px;border:1px solid var(--border);font-size:12px;vertical-align:top;line-height:1.4;}
+
+  .phase-bar{height:4px;width:100%;}
+</style>
+</head>
+<body>
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#141B2D;border:1px solid #1E2D45;border-radius:4px;padding:8px 16px;font-size:13px;color:#8A9BB0;font-family:'Carlito',Calibri,Arial,sans-serif;margin-bottom:24px;transition:border-color 0.15s;position:sticky;top:0;z-index:100;" onmouseover="this.style.borderColor='#00A86B';this.style.color='#FFFFFF'" onmouseout="this.style.borderColor='#1E2D45';this.style.color='#8A9BB0'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Back to all deliverables
+  </a>
+
+
+<div style="font-size:11px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">TAMARA COMMUNICATIONS PMO — FRAMEWORK 4 OF 6</div>
+<h1>Announcement Playbook</h1>
+<p class="sub">End-to-end execution guide for major announcements at sponsored events. Five phases · Checklist format · Adapted for Money 20/20 ME 2025.</p>
+
+<div class="instruction">
+  <strong style="color:var(--white);">How to use:</strong> Work through all five phases in sequence. Items marked <span style="background:var(--gold);color:#0A0E1A;font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;">CRITICAL</span> are non-negotiable — do not proceed to the next phase without these completed. The 15-Minute Day-Of Window is the operational core of this playbook: every team member must be briefed on their exact action at least 24hrs before D1. Owner tags indicate who is responsible.
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase">
+  <div class="phase-bar" style="background:var(--dark-green);"></div>
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div>
+      <div class="phase-title">DECISION + NARRATIVE LOCK</div>
+      <div class="phase-timing">W12–W8 · Led by CEO Office + CMO</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <ul class="checklist">
+      <li><div class="check-box critical"></div><span>Announcement decision made by CEO Office and CMO</span><span class="critical-label">CRITICAL</span><span class="owner-tag">CEO Office + CMO</span></li>
+      <li><div class="check-box critical"></div><span>Announcement narrative written and approved by CMO</span><span class="critical-label">CRITICAL</span><span class="owner-tag">Comms Lead</span></li>
+      <li><div class="check-box critical"></div><span>Announcement brief sent to Legal for clearance</span><span class="critical-label">CRITICAL</span><span class="owner-tag">PMO</span></li>
+      <li><div class="check-box"></div><span>Announcement brief sent to Product (if applicable)</span><span class="owner-tag">PMO</span></li>
+      <li><div class="check-box"></div><span>Event speaking slot confirmed with Tahaluf as announcement vehicle</span><span class="owner-tag">PMO</span></li>
+      <li><div class="check-box"></div><span>Internal announcement stakeholders briefed (Finance, HR, Product)</span><span class="owner-tag">PMO</span></li>
+      <li><div class="check-box"></div><span>Pre-scheduled meeting wish list submitted to Tahaluf — include announcement follow-up targets</span><span class="owner-tag">PMO</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase">
+  <div class="phase-bar" style="background:#3B82F6;"></div>
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div>
+      <div class="phase-title">CONTENT PRODUCTION</div>
+      <div class="phase-timing">W8–W4 · Led by Comms &amp; PR + Design</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <ul class="checklist">
+      <li><div class="check-box critical"></div><span>Press release drafted, reviewed, legally cleared, CMO approved</span><span class="critical-label">CRITICAL</span><span class="owner-tag">Comms Lead + Legal</span></li>
+      <li><div class="check-box critical"></div><span>CEO keynote incorporating announcement narrative finalised</span><span class="critical-label">CRITICAL</span><span class="owner-tag">CEO Office + Comms</span></li>
+      <li><div class="check-box"></div><span>Thought leadership article referencing announcement drafted</span><span class="owner-tag">Comms Lead</span></li>
+      <li><div class="check-box"></div><span>CEO LinkedIn post (announcement day) drafted + approved</span><span class="owner-tag">Comms Lead</span></li>
+      <li><div class="check-box"></div><span>Social media posts (all platforms) drafted, approved, scheduled for D1</span><span class="owner-tag">Social Team</span></li>
+      <li><div class="check-box"></div><span>Media alert / embargo briefing prepared for tier-1 journalists</span><span class="owner-tag">PR Lead</span></li>
+      <li><div class="check-box"></div><span>Investor communication prepared (if applicable)</span><span class="owner-tag">CEO Office</span></li>
+      <li><div class="check-box"></div><span>Visual assets for announcement (social graphics, press release header) approved by Design</span><span class="owner-tag">Design Team</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase">
+  <div class="phase-bar" style="background:#F97316;"></div>
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div>
+      <div class="phase-title">PRE-EVENT PREP</div>
+      <div class="phase-timing">W4–W1 · Led by PMO</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <ul class="checklist">
+      <li><div class="check-box critical"></div><span>All press release legal sign-offs obtained — final version locked</span><span class="critical-label">CRITICAL</span><span class="owner-tag">Legal + CMO</span></li>
+      <li><div class="check-box critical"></div><span>15-minute Day-Of sequence documented and distributed to all owners</span><span class="critical-label">CRITICAL</span><span class="owner-tag">PMO</span></li>
+      <li><div class="check-box critical"></div><span>Newswire distribution service briefed + press release pre-loaded (on-hold)</span><span class="critical-label">CRITICAL</span><span class="owner-tag">PR Lead</span></li>
+      <li><div class="check-box"></div><span>Embargoed journalist briefings completed (if applicable)</span><span class="owner-tag">PR Lead</span></li>
+      <li><div class="check-box"></div><span>CEO Day-Of briefing pack prepared — includes key messages, what NOT to say pre-announcement, timing</span><span class="owner-tag">Comms Lead</span></li>
+      <li><div class="check-box"></div><span>Social media team briefed + posts scheduled for 09:00+ D1 (DO NOT pre-schedule before stage moment)</span><span class="owner-tag">Social Team</span></li>
+      <li><div class="check-box"></div><span>Media monitoring alerts set up (Meltwater/Brandwatch) — keyword: "Tamara", "$2.4B", announcement</span><span class="owner-tag">PR Lead</span></li>
+      <li><div class="check-box"></div><span>Post-announcement investor meeting list confirmed with Tahaluf (Dalia Kamar)</span><span class="owner-tag">PMO</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- PHASE 4 — Day Of -->
+<div class="phase">
+  <div class="phase-bar" style="background:var(--gold);"></div>
+  <div class="phase-header">
+    <div class="phase-num">04</div>
+    <div>
+      <div class="phase-title">DAY-OF EXECUTION</div>
+      <div class="phase-timing">D1 · Led by PMO (War Room Active)</div>
+    </div>
+  </div>
+  <div class="phase-body">
+
+    <div style="margin-bottom:12px;">
+      <div style="font-size:13px;color:var(--grey);margin-bottom:10px;">Pre-announcement checklist (07:00–08:50)</div>
+      <ul class="checklist">
+        <li><div class="check-box critical"></div><span>07:00 Ground team briefing completed — all roles confirmed for the day</span><span class="critical-label">CRITICAL</span></li>
+        <li><div class="check-box critical"></div><span>07:30 CEO briefed — key messages, timing, what NOT to say before 09:00</span><span class="critical-label">CRITICAL</span></li>
+        <li><div class="check-box critical"></div><span>Newswire on standby — PR lead confirms readiness</span><span class="critical-label">CRITICAL</span></li>
+        <li><div class="check-box critical"></div><span>Social posts confirmed ready — NOT yet published</span><span class="critical-label">CRITICAL</span></li>
+        <li><div class="check-box critical"></div><span>CEO LinkedIn post confirmed ready — NOT yet published</span><span class="critical-label">CRITICAL</span></li>
+        <li><div class="check-box"></div><span>PMO confirms CEO is on stage and announcement is proceeding</span></li>
+      </ul>
+    </div>
+
+    <!-- 15-min window -->
+    <div class="window-box">
+      <div class="window-title">⚠ THE 15-MINUTE ANNOUNCEMENT WINDOW — 09:00 D1</div>
+      <div style="font-size:12px;color:var(--grey);margin-bottom:14px;">All actions below must execute in sequence within 15 minutes of CEO beginning announcement on stage. PMO is the single coordinator — no action fires without PMO green light except Stage (CEO-controlled).</div>
+
+      <div class="window-step">
+        <div class="window-min">T+00:00</div>
+        <div>
+          <div class="window-action"><strong>CEO begins announcement on stage</strong></div>
+          <div class="window-owner">Owner: CEO Office · Tahaluf stage crew on standby</div>
+        </div>
+      </div>
+      <div class="window-step">
+        <div class="window-min">T+02:00</div>
+        <div>
+          <div class="window-action"><strong>PMO green light signal to all teams</strong> (WhatsApp/Signal group message: "GO")</div>
+          <div class="window-owner">Owner: PMO · Triggered once CEO says the announcement words on stage</div>
+        </div>
+      </div>
+      <div class="window-step">
+        <div class="window-min">T+02:00</div>
+        <div>
+          <div class="window-action"><strong>Newswire press release goes live</strong> — PR Lead executes</div>
+          <div class="window-owner">Owner: PR Lead · Pre-loaded, single click on GO signal</div>
+        </div>
+      </div>
+      <div class="window-step">
+        <div class="window-min">T+03:00</div>
+        <div>
+          <div class="window-action"><strong>Tamara social media posts published</strong> (all platforms simultaneously)</div>
+          <div class="window-owner">Owner: Social Team · Pre-drafted, GO signal = publish</div>
+        </div>
+      </div>
+      <div class="window-step">
+        <div class="window-min">T+05:00</div>
+        <div>
+          <div class="window-action"><strong>CEO LinkedIn post published</strong> by CEO EA or Comms Lead</div>
+          <div class="window-owner">Owner: CEO EA / Comms Lead · Drafted and approved pre-event</div>
+        </div>
+      </div>
+      <div class="window-step">
+        <div class="window-min">T+07:00</div>
+        <div>
+          <div class="window-action"><strong>Embargoed journalist notifications sent</strong> — "Embargo lifted, story now live"</div>
+          <div class="window-owner">Owner: PR Lead · Pre-written email, send on GO+5</div>
+        </div>
+      </div>
+      <div class="window-step">
+        <div class="window-min">T+10:00</div>
+        <div>
+          <div class="window-action"><strong>Media monitoring alerts active</strong> — first coverage check</div>
+          <div class="window-owner">Owner: PR Lead · Meltwater/Brandwatch live dashboard</div>
+        </div>
+      </div>
+      <div class="window-step">
+        <div class="window-min">T+15:00</div>
+        <div>
+          <div class="window-action"><strong>PMO confirms all actions executed</strong> — log to Issue Log if anything missed</div>
+          <div class="window-owner">Owner: PMO · Sequence complete, reactive phase begins</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <div style="font-size:13px;color:var(--grey);margin-bottom:10px;">Post-announcement (remainder of D1)</div>
+      <ul class="checklist">
+        <li><div class="check-box"></div><span>Real-time media monitoring + reactive amplification</span><span class="owner-tag">PR Lead + Social</span></li>
+        <li><div class="check-box"></div><span>CEO post-announcement meetings executing (investor + media)</span><span class="owner-tag">CEO EA + PMO</span></li>
+        <li><div class="check-box"></div><span>18:00 Day 1 debrief — coverage snapshot, adjustments for D2</span><span class="owner-tag">PMO + CMO</span></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase">
+  <div class="phase-bar" style="background:#A855F7;"></div>
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div>
+      <div class="phase-title">POST-ANNOUNCEMENT HARVEST</div>
+      <div class="phase-timing">D2–P2 · Led by PR Lead + PMO</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <ul class="checklist">
+      <li><div class="check-box"></div><span>Coverage harvest — all media pickups documented (outlet, tier, link, reach)</span><span class="owner-tag">PR Lead</span></li>
+      <li><div class="check-box"></div><span>Social amplification — CEO keynote clip edited + posted (D1 evening / D2 morning)</span><span class="owner-tag">Social Team</span></li>
+      <li><div class="check-box"></div><span>Reactive media interviews scheduled + executed (D2–D3)</span><span class="owner-tag">PR Lead + CEO EA</span></li>
+      <li><div class="check-box"></div><span>Tahaluf post-event email campaign activated (Founding Partner benefit)</span><span class="owner-tag">PR Lead</span></li>
+      <li><div class="check-box"></div><span>Share of voice vs competitors measured (Meltwater)</span><span class="owner-tag">PR Lead</span></li>
+      <li><div class="check-box"></div><span>Announcement ROI measured against targets (media volume, tier, impressions, "super-app" framing)</span><span class="owner-tag">PMO + PR Lead</span></li>
+      <li><div class="check-box"></div><span>Post-event report section on announcement completed</span><span class="owner-tag">PMO</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Contacts quick reference -->
+<h2>Tahaluf Contacts — Announcement-Relevant</h2>
+<table>
+  <thead><tr><th>Name</th><th>Role at Tahaluf</th><th>Relevance to Announcement</th><th>Contact Moment</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Kinga Swiderska</strong></td><td>Speaking Programme</td><td>Confirms CEO keynote slot — our announcement vehicle</td><td>W12–W8 (topic locked)</td></tr>
+    <tr><td><strong>Kitty Draper</strong></td><td>PR</td><td>Joint press release distribution; Tamara's announcement coverage</td><td>W8–D1</td></tr>
+    <tr><td><strong>Dalia Kamar</strong></td><td>Investor Meetings</td><td>Post-announcement investor meeting scheduling</td><td>W8 wish list; D1–D3 execution</td></tr>
+    <tr><td><strong>Priyanka Nazeer</strong></td><td>Sponsorship + Deliverables</td><td>All deliverable submissions including press release to Tahaluf</td><td>W12–W4</td></tr>
+    <tr><td><strong>Annabelle Mander</strong></td><td>EVP (CMO-level)</td><td>Escalation only — major disputes or strategic requests</td><td>As needed</td></tr>
+  </tbody>
+</table>
+
+<div style="margin-top:24px;font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:16px;">
+  Tamara Communications PMO · Announcement Playbook · Framework 4 of 6 · Built for Money 20/20 ME $2.4B announcement · Reusable for any major announcement
+</div>
+</body>
+</html>

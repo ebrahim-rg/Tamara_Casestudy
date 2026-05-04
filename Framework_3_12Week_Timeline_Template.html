@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Framework 3 — 12-Week Timeline Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:#0A0E1A;--green:#00A86B;--dark-green:#007A4D;
+    --white:#FFFFFF;--gold:#F5A623;--grey:#8A9BB0;
+    --card:#141B2D;--border:#1E2D45;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;font-size:13px;padding:40px;}
+  h1{font-size:28px;font-weight:700;color:var(--green);margin-bottom:4px;}
+  .sub{font-size:13px;color:var(--grey);margin-bottom:24px;}
+  .instruction{background:var(--card);border-left:4px solid var(--green);padding:14px 18px;margin-bottom:24px;font-size:13px;color:var(--grey);line-height:1.6;}
+  table{border-collapse:collapse;width:100%;margin-bottom:24px;}
+  thead tr{background:var(--green);}
+  thead th{color:#fff;font-weight:700;font-size:11px;padding:7px 8px;text-align:center;border:1px solid var(--border);white-space:nowrap;}
+  thead th.act-col{text-align:left;min-width:160px;}
+  tbody tr:nth-child(odd){background:var(--card);}
+  tbody tr:nth-child(even){background:var(--bg);}
+  tbody td{color:var(--white);padding:6px 8px;border:1px solid var(--border);font-size:11px;vertical-align:middle;text-align:center;}
+  tbody td.act-col{text-align:left;font-size:12px;}
+  .section-hdr{background:#0F1829!important;}
+  .section-hdr td{color:var(--green)!important;font-weight:700!important;font-size:12px!important;padding:8px 10px!important;letter-spacing:1px;text-align:left!important;}
+  .bar{width:100%;height:18px;border-radius:3px;display:block;}
+  .milestone{display:inline-block;width:12px;height:12px;transform:rotate(45deg);margin:auto;}
+  .risk{display:inline-block;font-size:10px;font-weight:700;color:var(--gold);border:1px solid var(--gold);border-radius:2px;padding:1px 4px;}
+  .phase-label{font-size:10px;font-weight:700;text-align:center;padding:5px 8px;border-radius:2px;color:#fff;}
+  .legend-row{display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;align-items:center;}
+  .legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--grey);}
+  .swatch{width:24px;height:12px;border-radius:2px;}
+  .dept-tag{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;}
+  .critical-col{background:rgba(245,166,35,0.07)!important;}
+</style>
+</head>
+<body>
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#141B2D;border:1px solid #1E2D45;border-radius:4px;padding:8px 16px;font-size:13px;color:#8A9BB0;font-family:'Carlito',Calibri,Arial,sans-serif;margin-bottom:24px;transition:border-color 0.15s;position:sticky;top:0;z-index:100;" onmouseover="this.style.borderColor='#00A86B';this.style.color='#FFFFFF'" onmouseout="this.style.borderColor='#1E2D45';this.style.color='#8A9BB0'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Back to all deliverables
+  </a>
+
+
+<div style="font-size:11px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">TAMARA COMMUNICATIONS PMO — FRAMEWORK 3 OF 6</div>
+<h1>12-Week Timeline Template</h1>
+<p class="sub">Standard milestone template for all sponsorship activations. Pre-populate with event details and adapt in W12 kickoff.</p>
+
+<div class="instruction">
+  <strong style="color:var(--white);">How to use:</strong> Fill in event name and dates at top. Each department's row shows standard milestones. ● = Activity period &nbsp;|&nbsp; ◆ = Key milestone &nbsp;|&nbsp; ⚠ = Critical deadline (miss = risk to event). Dependency chains: Narrative (W10) must precede Design brief (W10) must precede Asset submission (W6). <strong style="color:var(--gold);">Never move ⚠ milestones without CMO approval.</strong>
+</div>
+
+<!-- Event header fields -->
+<table style="margin-bottom:20px;">
+  <tbody>
+    <tr>
+      <td style="width:180px;color:var(--grey);">Event Name</td>
+      <td style="color:var(--gold);font-style:italic;font-weight:700;">Money 20/20 Middle East 2025</td>
+      <td style="width:180px;color:var(--grey);">Event Dates</td>
+      <td style="color:var(--gold);font-style:italic;font-weight:700;">Sep 15–17, 2025 · Riyadh</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">Sponsorship Tier</td>
+      <td style="color:var(--gold);font-style:italic;font-weight:700;">Founding Partner ($350K+)</td>
+      <td style="color:var(--grey);">PMO Lead</td>
+      <td style="color:var(--gold);font-style:italic;font-weight:700;">Qadr Arslan</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">W12 Kickoff Date</td>
+      <td style="color:var(--gold);font-style:italic;">Fill in: ___________</td>
+      <td style="color:var(--grey);">CMO</td>
+      <td style="color:var(--gold);font-style:italic;">Fill in: ___________</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Phase header -->
+<div style="display:grid;grid-template-columns:160px repeat(12,1fr) 48px 48px 48px 56px 56px;gap:2px;margin-bottom:6px;">
+  <div></div>
+  <div class="phase-label" style="background:var(--dark-green);grid-column:span 12;">PRE-EVENT — 12 WEEKS</div>
+  <div class="phase-label" style="background:#F5A623;color:#0A0E1A;grid-column:span 3;">IN-EVENT</div>
+  <div class="phase-label" style="background:#3B82F6;grid-column:span 2;">POST</div>
+</div>
+
+<!-- Main Timeline Table -->
+<table>
+  <thead>
+    <tr>
+      <th class="act-col">Department / Activity</th>
+      <th>W12</th><th>W11</th><th>W10</th><th>W9</th><th>W8</th><th>W7</th><th>W6</th><th>W5</th><th>W4</th><th>W3</th><th>W2</th><th>W1</th>
+      <th style="background:#1a2a1a;">D1</th><th style="background:#1a2a1a;">D2</th><th style="background:#1a2a1a;">D3</th>
+      <th style="background:#1a2035;">P1</th><th style="background:#1a2035;">P2</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- PMO -->
+    <tr class="section-hdr"><td colspan="18"><span class="dept-tag" style="background:#6B7280;"></span>PMO (COMMUNICATIONS)</td></tr>
+    <tr>
+      <td class="act-col">Kickoff + RACI agreement</td>
+      <td><div class="milestone" style="background:var(--gold);"></div></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Master tracker + communication rhythm live</td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.5);"></td>
+      <td style="background:rgba(107,114,128,0.5);"></td>
+      <td style="background:rgba(107,114,128,0.5);"></td>
+      <td style="background:rgba(107,114,128,0.3);"></td>
+      <td style="background:rgba(107,114,128,0.3);"></td>
+    </tr>
+    <tr>
+      <td class="act-col">Tahaluf interface ownership active</td>
+      <td></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.25);"></td>
+      <td style="background:rgba(107,114,128,0.35);"></td>
+      <td style="background:rgba(107,114,128,0.35);"></td>
+      <td style="background:rgba(107,114,128,0.35);"></td>
+      <td style="background:rgba(107,114,128,0.5);"></td>
+      <td style="background:rgba(107,114,128,0.5);"></td>
+      <td style="background:rgba(107,114,128,0.5);"></td>
+      <td style="background:rgba(107,114,128,0.7);"></td>
+      <td style="background:rgba(107,114,128,0.7);"></td>
+      <td style="background:rgba(107,114,128,0.7);"></td>
+      <td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Post-event frameworks + report</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(107,114,128,0.5);"></td>
+      <td style="background:rgba(107,114,128,0.5);"></td>
+    </tr>
+
+    <!-- CEO Office -->
+    <tr class="section-hdr"><td colspan="18"><span class="dept-tag" style="background:#F5A623;"></span>CEO OFFICE</td></tr>
+    <tr>
+      <td class="act-col">W12 kickoff briefing</td>
+      <td style="background:rgba(245,166,35,0.3);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Narrative approved</td>
+      <td></td><td></td>
+      <td><div class="milestone" style="background:var(--gold);"></div></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col" style="color:var(--gold);font-weight:700;">⚠ Keynote topic → Tahaluf (W8 hard deadline)</td>
+      <td></td><td></td><td></td><td></td>
+      <td><span class="risk">⚠ W8</span></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Keynote development + rehearsal</td>
+      <td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(245,166,35,0.4);"></td>
+      <td style="background:rgba(245,166,35,0.4);"></td>
+      <td style="background:rgba(245,166,35,0.4);"></td>
+      <td style="background:rgba(245,166,35,0.4);"></td>
+      <td></td>
+      <td style="background:rgba(245,166,35,0.7);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">On stage + strategic meetings</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(245,166,35,0.8);"></td>
+      <td style="background:rgba(245,166,35,0.8);"></td>
+      <td style="background:rgba(245,166,35,0.8);"></td>
+      <td></td><td></td>
+    </tr>
+
+    <!-- Comms & PR -->
+    <tr class="section-hdr"><td colspan="18"><span class="dept-tag" style="background:#3B82F6;"></span>Sales &amp; PR</td></tr>
+    <tr>
+      <td class="act-col">Narrative one-pager drafted</td>
+      <td style="background:rgba(59,130,246,0.3);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">PR plan + media list + article</td>
+      <td></td><td></td>
+      <td style="background:rgba(59,130,246,0.5);"></td>
+      <td style="background:rgba(59,130,246,0.5);"></td>
+      <td style="background:rgba(59,130,246,0.5);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Press release → Legal</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+      <td><div class="milestone" style="background:#3B82F6;"></div></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Media outreach + all materials final</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(59,130,246,0.4);"></td>
+      <td style="background:rgba(59,130,246,0.5);"></td>
+      <td style="background:rgba(59,130,246,0.6);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Coverage + amplification + post report</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(59,130,246,0.7);"></td>
+      <td style="background:rgba(59,130,246,0.7);"></td>
+      <td style="background:rgba(59,130,246,0.7);"></td>
+      <td style="background:rgba(59,130,246,0.5);"></td>
+      <td style="background:rgba(59,130,246,0.5);"></td>
+    </tr>
+
+    <!-- Design & Brand -->
+    <tr class="section-hdr"><td colspan="18"><span class="dept-tag" style="background:#00A86B;"></span>DESIGN &amp; BRAND</td></tr>
+    <tr>
+      <td class="act-col">Design brief received from PMO</td>
+      <td></td><td></td>
+      <td><div class="milestone" style="background:var(--green);"></div></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Booth concept + all assets development</td>
+      <td></td><td></td><td></td>
+      <td style="background:rgba(0,168,107,0.4);"></td>
+      <td style="background:rgba(0,168,107,0.5);"></td>
+      <td style="background:rgba(0,168,107,0.6);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col" style="color:var(--gold);font-weight:700;">⚠ ALL ASSETS → Tahaluf (W6 hard deadline)</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+      <td><span class="risk">⚠ W6</span></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Revisions + Tahaluf approval received</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(0,168,107,0.4);"></td>
+      <td style="background:rgba(0,168,107,0.6);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Booth build supervision + on-site mgmt</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(0,168,107,0.7);"></td>
+      <td style="background:rgba(0,168,107,0.7);"></td>
+      <td style="background:rgba(0,168,107,0.7);"></td>
+      <td style="background:rgba(0,168,107,0.7);"></td>
+      <td></td><td></td>
+    </tr>
+
+    <!-- Legal -->
+    <tr class="section-hdr"><td colspan="18"><span class="dept-tag" style="background:#EF4444;"></span>LEGAL</td></tr>
+    <tr>
+      <td class="act-col">Sponsorship agreement review</td>
+      <td style="background:rgba(239,68,68,0.3);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Vendor contracts + NDA review</td>
+      <td></td><td></td>
+      <td style="background:rgba(239,68,68,0.3);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Announcement brief received + cleared</td>
+      <td></td><td></td><td></td><td></td>
+      <td style="background:rgba(239,68,68,0.3);"></td>
+      <td></td>
+      <td><div class="milestone" style="background:#EF4444;"></div></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Press release sign-off + final clearances</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(239,68,68,0.5);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+
+    <!-- Finance -->
+    <tr class="section-hdr"><td colspan="18"><span class="dept-tag" style="background:#F97316;"></span>FINANCE</td></tr>
+    <tr>
+      <td class="act-col">Budget locked + tracker activated</td>
+      <td><div class="milestone" style="background:#F97316;"></div></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Live budget tracker (full duration)</td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.2);"></td>
+      <td style="background:rgba(249,115,22,0.3);"></td>
+      <td style="background:rgba(249,115,22,0.3);"></td>
+    </tr>
+    <tr>
+      <td class="act-col">Vendor contracted + payments scheduled</td>
+      <td></td><td></td>
+      <td style="background:rgba(249,115,22,0.4);"></td>
+      <td></td>
+      <td style="background:rgba(249,115,22,0.6);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Budget variance final report</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(249,115,22,0.5);"></td>
+      <td style="background:rgba(249,115,22,0.5);"></td>
+    </tr>
+
+    <!-- HR & People -->
+    <tr class="section-hdr"><td colspan="18"><span class="dept-tag" style="background:#A855F7;"></span>HR &amp; PEOPLE</td></tr>
+    <tr>
+      <td class="act-col">Badge strategy approved</td>
+      <td></td><td></td>
+      <td style="background:rgba(168,85,247,0.4);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Travel + accommodation booked</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(168,85,247,0.5);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Briefing packs + badge names submitted</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(168,85,247,0.4);"></td>
+      <td style="background:rgba(168,85,247,0.5);"></td>
+      <td style="background:rgba(168,85,247,0.6);"></td>
+      <td><div class="milestone" style="background:#A855F7;"></div></td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">On-ground logistics active</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(168,85,247,0.7);"></td>
+      <td style="background:rgba(168,85,247,0.7);"></td>
+      <td style="background:rgba(168,85,247,0.7);"></td>
+      <td></td><td></td>
+    </tr>
+
+    <!-- Product -->
+    <tr class="section-hdr"><td colspan="18"><span class="dept-tag" style="background:#14B8A6;"></span>PRODUCT</td></tr>
+    <tr>
+      <td class="act-col">Announcement brief (if applicable)</td>
+      <td></td><td></td>
+      <td style="background:rgba(20,184,166,0.3);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Product brief → Comms + demo brief</td>
+      <td></td><td></td><td></td><td></td>
+      <td><div class="milestone" style="background:#14B8A6;"></div></td>
+      <td></td>
+      <td style="background:rgba(20,184,166,0.4);"></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="act-col">Product moment on-site</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td style="background:rgba(20,184,166,0.6);"></td>
+      <td></td><td></td><td></td><td></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<!-- Dependency chains -->
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px 20px;margin-bottom:24px;">
+  <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:12px;">CRITICAL DEPENDENCY CHAINS</div>
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <div style="font-size:12px;color:var(--white);">
+      <span style="color:var(--gold);font-weight:700;">Chain 1:</span>
+      <span style="color:var(--grey);"> Narrative approved (W10) → Design brief issued (W10) → Booth concept approved (W8) → Assets submitted to Tahaluf </span>
+      <span style="color:var(--gold);font-weight:700;">(W6 — NO FLEXIBILITY)</span>
+    </div>
+    <div style="font-size:12px;color:var(--white);">
+      <span style="color:var(--gold);font-weight:700;">Chain 2:</span>
+      <span style="color:var(--grey);"> Announcement decision (W8) → Legal clearance (W6) → Press release drafted (W7) → Press release legal sign-off (W6) → Media outreach (W4)</span>
+    </div>
+    <div style="font-size:12px;color:var(--white);">
+      <span style="color:var(--gold);font-weight:700;">Chain 3:</span>
+      <span style="color:var(--grey);"> Keynote topic → Tahaluf </span>
+      <span style="color:var(--gold);font-weight:700;">(W8 — miss = lose speaking slot)</span>
+      <span style="color:var(--grey);"> → Keynote development (W7–W4) → Rehearsal (W2) → CEO on stage (D1)</span>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:12px;font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:16px;">
+  Tamara Communications PMO · 12-Week Timeline Template · Framework 3 of 6 · Adapt to any sponsorship by updating event fields + names
+</div>
+</body>
+</html>

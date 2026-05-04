@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Framework 6 — Lessons Learned Log</title>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:#0A0E1A;--green:#00A86B;--dark-green:#007A4D;
+    --white:#FFFFFF;--gold:#F5A623;--grey:#8A9BB0;
+    --card:#141B2D;--border:#1E2D45;
+    --red:#EF4444;--blue:#3B82F6;--orange:#F97316;--purple:#A855F7;--teal:#14B8A6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;font-size:13px;padding:40px;}
+  h1{font-size:28px;font-weight:700;color:var(--green);margin-bottom:4px;}
+  h2{font-size:15px;font-weight:700;color:var(--white);margin:28px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+  .sub{font-size:13px;color:var(--grey);margin-bottom:24px;}
+  .instruction{background:var(--card);border-left:4px solid var(--green);padding:14px 18px;margin-bottom:24px;font-size:13px;color:var(--grey);line-height:1.6;}
+  table{border-collapse:collapse;width:100%;margin-bottom:20px;}
+  thead tr{background:var(--green);}
+  thead th{color:#fff;font-weight:700;font-size:12px;padding:8px 10px;text-align:left;border:1px solid var(--border);}
+  tbody tr:nth-child(odd){background:var(--card);}
+  tbody tr:nth-child(even){background:var(--bg);}
+  tbody td{color:var(--white);padding:8px 10px;border:1px solid var(--border);font-size:12px;vertical-align:top;line-height:1.5;}
+  .section-hdr{background:#0F1829!important;}
+  .section-hdr td{color:var(--green)!important;font-weight:700!important;font-size:13px!important;padding:9px 10px!important;letter-spacing:1px;}
+  .cat-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-right:4px;}
+  .impact-high{color:var(--red);font-weight:700;}
+  .impact-med{color:var(--gold);font-weight:700;}
+  .impact-low{color:var(--grey);}
+  .applied-yes{color:var(--green);font-weight:700;}
+  .applied-no{color:var(--grey);}
+  .applied-pending{color:var(--gold);}
+  select.cell-select{background:transparent;border:1px solid var(--border);color:var(--white);font-size:11px;padding:2px 4px;border-radius:3px;font-family:inherit;width:100%;}
+  textarea.cell-area{background:transparent;border:none;color:var(--white);font-size:12px;padding:0;font-family:inherit;width:100%;resize:none;min-height:36px;line-height:1.5;}
+  textarea.cell-area:focus{outline:1px solid var(--green);border-radius:2px;}
+  .new-row-btn{background:var(--card);border:1px solid var(--green);color:var(--green);font-size:12px;font-weight:700;padding:8px 18px;border-radius:4px;cursor:pointer;margin-top:8px;font-family:inherit;}
+  .new-row-btn:hover{background:var(--dark-green);color:#fff;}
+  .stats-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;}
+  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:12px 18px;flex:1;min-width:120px;}
+  .stat-num{font-size:28px;font-weight:700;color:var(--gold);}
+  .stat-label{font-size:11px;color:var(--grey);margin-top:2px;}
+  .filter-row{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+  .filter-btn{background:var(--card);border:1px solid var(--border);color:var(--grey);font-size:11px;padding:5px 12px;border-radius:20px;cursor:pointer;font-family:inherit;}
+  .filter-btn.active{background:var(--green);border-color:var(--green);color:#fff;font-weight:700;}
+  .session-info{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 20px;margin-bottom:24px;}
+</style>
+</head>
+<body>
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#141B2D;border:1px solid #1E2D45;border-radius:4px;padding:8px 16px;font-size:13px;color:#8A9BB0;font-family:'Carlito',Calibri,Arial,sans-serif;margin-bottom:24px;transition:border-color 0.15s;position:sticky;top:0;z-index:100;" onmouseover="this.style.borderColor='#00A86B';this.style.color='#FFFFFF'" onmouseout="this.style.borderColor='#1E2D45';this.style.color='#8A9BB0'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Back to all deliverables
+  </a>
+
+
+<div style="font-size:11px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">TAMARA COMMUNICATIONS PMO — FRAMEWORK 6 OF 6</div>
+<h1>Lessons Learned Log</h1>
+<p class="sub">12 categories · Structured root-cause format · Feeds directly into next event W12 kickoff. Knowledge that stays in the system, not in people's heads.</p>
+
+<div class="instruction">
+  <strong style="color:var(--white);">How to use:</strong> Facilitate a 90-minute session within 10 business days of the event. PMO leads. Attendees: CMO, Comms Lead, Design Lead, PR Lead, PMO. Complete all 12 categories — even if a category had no issues, log what worked well. Every row must have a Recommendation and Owner before the session closes. Applied column is reviewed at the W12 kickoff of the next event.
+</div>
+
+<!-- Session info -->
+<div class="session-info">
+  <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;">SESSION DETAILS</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:13px;">
+    <div><span style="color:var(--grey);">Event: </span><span style="color:var(--gold);font-weight:700;">Money 20/20 ME 2025</span></div>
+    <div><span style="color:var(--grey);">Session date: </span><span style="color:var(--grey);font-style:italic;">Fill in: ___________</span></div>
+    <div><span style="color:var(--grey);">Facilitator: </span><span style="color:var(--grey);font-style:italic;">PMO Lead (Qadr Arslan)</span></div>
+    <div><span style="color:var(--grey);">Attendees: </span><span style="color:var(--grey);font-style:italic;">CMO · Comms Lead · Design Lead · PR Lead · PMO</span></div>
+    <div><span style="color:var(--grey);">Duration: </span><span style="color:var(--grey);">90 minutes</span></div>
+    <div><span style="color:var(--grey);">Next event W12: </span><span style="color:var(--grey);font-style:italic;">Fill in: ___________</span></div>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-row" id="stats-row">
+  <div class="stat-card"><div class="stat-num" id="stat-total">0</div><div class="stat-label">Total entries</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-high" style="color:var(--red);">0</div><div class="stat-label">High impact</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-applied" style="color:var(--green);">0</div><div class="stat-label">Applied to next event</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-pending" style="color:var(--gold);">0</div><div class="stat-label">Pending application</div></div>
+</div>
+
+<!-- Filter -->
+<div class="filter-row">
+  <span style="font-size:12px;color:var(--grey);">Filter by category:</span>
+  <button class="filter-btn active" data-filter="all" onclick="filterRows(this)">All</button>
+  <button class="filter-btn" data-filter="Narrative" onclick="filterRows(this)">Narrative</button>
+  <button class="filter-btn" data-filter="Stakeholder" onclick="filterRows(this)">Stakeholder</button>
+  <button class="filter-btn" data-filter="Design" onclick="filterRows(this)">Design</button>
+  <button class="filter-btn" data-filter="Legal" onclick="filterRows(this)">Legal</button>
+  <button class="filter-btn" data-filter="Announcement" onclick="filterRows(this)">Announcement</button>
+  <button class="filter-btn" data-filter="Vendor" onclick="filterRows(this)">Vendor</button>
+  <button class="filter-btn" data-filter="Budget" onclick="filterRows(this)">Budget</button>
+  <button class="filter-btn" data-filter="Logistics" onclick="filterRows(this)">Logistics</button>
+  <button class="filter-btn" data-filter="PR/Media" onclick="filterRows(this)">PR/Media</button>
+  <button class="filter-btn" data-filter="Post-Event" onclick="filterRows(this)">Post-Event</button>
+</div>
+
+<!-- Main Log Table -->
+<table id="lessons-table">
+  <thead>
+    <tr>
+      <th style="width:110px;">Category</th>
+      <th style="width:55px;">Impact</th>
+      <th>What Happened / What Worked Well</th>
+      <th>Root Cause</th>
+      <th>Recommendation</th>
+      <th style="width:100px;">Owner</th>
+      <th style="width:90px;">Applied to Next Event?</th>
+    </tr>
+  </thead>
+  <tbody id="log-body">
+
+    <!-- Pre-loaded example rows for all 12 categories -->
+    <tr data-cat="Narrative">
+      <td><span class="cat-tag" style="background:rgba(0,168,107,0.2);color:var(--green);">Narrative</span></td>
+      <td><span class="impact-high">High</span></td>
+      <td>Narrative locked at W10 as planned. No late changes. Design brief issued same day.</td>
+      <td>Dependency-first planning enforced from W12.</td>
+      <td>Keep this sequence in all future events. Narrative sign-off in RACI as A = CMO, hard deadline W10.</td>
+      <td>CMO</td>
+      <td><span class="applied-yes">✓ Yes</span></td>
+    </tr>
+    <tr data-cat="Stakeholder">
+      <td><span class="cat-tag" style="background:rgba(59,130,246,0.2);color:var(--blue);">Stakeholder</span></td>
+      <td><span class="impact-med">Medium</span></td>
+      <td>Finance BP needed additional lead time for vendor payment approvals — raised in W6, should have been W9.</td>
+      <td>Payment approval process at Tamara requires 3-week lead time — not mapped in original RACI.</td>
+      <td>Add "Finance payment approval windows" to RACI template. Flag to Finance BP at W12 kickoff, not W6.</td>
+      <td>PMO</td>
+      <td><span class="applied-pending">⏳ Pending</span></td>
+    </tr>
+    <tr data-cat="Design">
+      <td><span class="cat-tag" style="background:rgba(0,168,107,0.2);color:var(--green);">Design</span></td>
+      <td><span class="impact-high">High</span></td>
+      <td>2 of 7 design assets required revision by Tahaluf. First submission pass rate: 71%, below 80% target.</td>
+      <td>Tamara brand guidelines not fully aligned with Tahaluf event brand guidelines. Two conflicts not caught internally.</td>
+      <td>Create Tahaluf brand guidelines checklist for Design team to self-audit before submission. Add to Design brief template.</td>
+      <td>Design Lead</td>
+      <td><span class="applied-pending">⏳ Pending</span></td>
+    </tr>
+    <tr data-cat="Legal">
+      <td><span class="cat-tag" style="background:rgba(239,68,68,0.2);color:var(--red);">Legal</span></td>
+      <td><span class="impact-med">Medium</span></td>
+      <td>Legal clearance for announcement obtained on time. Parallel review model worked well — no sequential delays.</td>
+      <td>Proactive inclusion of Legal as parallel reviewer from W10 (not W6 as in previous events).</td>
+      <td>Maintain parallel review model. Reinforce in RACI: Legal receives announcement brief at W8, not W6.</td>
+      <td>Legal</td>
+      <td><span class="applied-yes">✓ Yes</span></td>
+    </tr>
+    <tr data-cat="Announcement">
+      <td><span class="cat-tag" style="background:rgba(245,166,35,0.2);color:var(--gold);">Announcement</span></td>
+      <td><span class="impact-high">High</span></td>
+      <td>15-minute announcement sequence executed within 17 minutes. Minor delay in CEO LinkedIn post (2 min over).</td>
+      <td>CEO EA was coordinating two simultaneous tasks at T+5:00. LinkedIn post not pre-scheduled.</td>
+      <td>Pre-schedule CEO LinkedIn post using Buffer/Hootsuite set for T+5. CEO EA should have one task only during sequence.</td>
+      <td>Comms Lead</td>
+      <td><span class="applied-pending">⏳ Pending</span></td>
+    </tr>
+    <tr data-cat="Vendor">
+      <td><span class="cat-tag" style="background:rgba(249,115,22,0.2);color:var(--orange);">Vendor</span></td>
+      <td><span class="impact-med">Medium</span></td>
+      <td>Booth build vendor delivered on time. AV vendor required additional briefing day-before on CEO keynote requirements.</td>
+      <td>AV technical requirements brief not included in initial vendor brief — assumed covered in standard AV package.</td>
+      <td>Add "CEO keynote AV requirements" section to vendor brief template. Confirm 48hrs before event.</td>
+      <td>PMO</td>
+      <td><span class="applied-pending">⏳ Pending</span></td>
+    </tr>
+    <tr data-cat="Budget">
+      <td><span class="cat-tag" style="background:rgba(249,115,22,0.2);color:var(--orange);">Budget</span></td>
+      <td><span class="impact-low">Low</span></td>
+      <td>Final budget variance: 3.2% over — within 5% target. PR agency out-of-scope work was main driver.</td>
+      <td>PR agency brief did not define scope boundaries clearly for Day-of coverage activities.</td>
+      <td>Add explicit OOS clause to all agency briefs. Pre-agree day-of coverage scope and associated costs at W8.</td>
+      <td>PMO + Finance</td>
+      <td><span class="applied-pending">⏳ Pending</span></td>
+    </tr>
+    <tr data-cat="Logistics">
+      <td><span class="cat-tag" style="background:rgba(168,85,247,0.2);color:var(--purple);">Logistics</span></td>
+      <td><span class="impact-low">Low</span></td>
+      <td>Badge allocation worked well. 30 passes distributed with no disputes. Briefing packs rated highly by attendees.</td>
+      <td>Clear allocation framework agreed at W10. Briefing packs co-created with HR at W6.</td>
+      <td>Document badge allocation criteria in HR template. Keep briefing pack co-creation model for all future events.</td>
+      <td>HR Lead</td>
+      <td><span class="applied-yes">✓ Yes</span></td>
+    </tr>
+    <tr data-cat="PR/Media">
+      <td><span class="cat-tag" style="background:rgba(59,130,246,0.2);color:var(--blue);">PR/Media</span></td>
+      <td><span class="impact-high">High</span></td>
+      <td>22 Tier-1 media placements (target: 15). Share of voice vs Tabby: 74% (target: 60%). Exceeded all brand ROI targets.</td>
+      <td>Embargoed journalist briefings + coordinated announcement sequence created strong Day-1 coverage wave.</td>
+      <td>Replicate embargo model for all major announcements. Document journalist list with tier ratings for next event.</td>
+      <td>PR Lead</td>
+      <td><span class="applied-yes">✓ Yes</span></td>
+    </tr>
+    <tr data-cat="Post-Event">
+      <td><span class="cat-tag" style="background:rgba(20,184,166,0.2);color:var(--teal);">Post-Event</span></td>
+      <td><span class="impact-med">Medium</span></td>
+      <td>Post-event report delivered Day 8 (target: Day 7). One day delay due to media monitoring data not ready.</td>
+      <td>Meltwater report takes 5 business days post-event. Not accounted for in report timeline.</td>
+      <td>Order Meltwater report on D3 (not post-event). Build 2-day buffer into report timeline. New deadline: Day 9.</td>
+      <td>PMO</td>
+      <td><span class="applied-pending">⏳ Pending</span></td>
+    </tr>
+    <tr data-cat="Stakeholder">
+      <td><span class="cat-tag" style="background:rgba(59,130,246,0.2);color:var(--blue);">Stakeholder</span></td>
+      <td><span class="impact-low">Low</span></td>
+      <td>Tahaluf contacts Priyanka Nazeer and Kinga Swiderska were responsive and professional. Annabelle Mander escalation not needed.</td>
+      <td>Single PMO point of contact with Tahaluf eliminated confusion. Both sides always knew who to call.</td>
+      <td>Maintain single-PMO interface with Tahaluf for all future events. Document Tahaluf contacts in framework.</td>
+      <td>PMO</td>
+      <td><span class="applied-yes">✓ Yes</span></td>
+    </tr>
+    <tr data-cat="Narrative">
+      <td><span class="cat-tag" style="background:rgba(0,168,107,0.2);color:var(--green);">Narrative</span></td>
+      <td><span class="impact-high">High</span></td>
+      <td>73% of post-event media coverage used "super-app" framing (target: measurable shift from "BNPL"). Strategic narrative objective achieved.</td>
+      <td>Consistent messaging from CEO keynote + press release + social + journalist briefings all used identical language.</td>
+      <td>Document narrative consistency model. Single approved messaging doc shared with all spokespeople before event.</td>
+      <td>Comms Lead</td>
+      <td><span class="applied-yes">✓ Yes</span></td>
+    </tr>
+
+  </tbody>
+</table>
+<button class="new-row-btn" onclick="addRow()">+ Add New Entry</button>
+
+<!-- Category coverage check -->
+<h2>Category Coverage — All 12 Must Be Addressed</h2>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;" id="cat-grid">
+</div>
+
+<!-- Instructions tab content -->
+<h2>Session Facilitation Guide</h2>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:20px 24px;">
+  <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:14px;">90-MINUTE FACILITATION AGENDA</div>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;gap:14px;">
+      <div style="min-width:70px;font-weight:700;color:var(--gold);">0:00–0:10</div>
+      <div><strong style="color:var(--white);">Context setting (PMO)</strong><br><span style="color:var(--grey);font-size:12px;">Share ROI Dashboard results. Set ground rules: no blame, focus on system not people. Every issue has a root cause, every root cause has a recommendation.</span></div>
+    </div>
+    <div style="display:flex;gap:14px;">
+      <div style="min-width:70px;font-weight:700;color:var(--gold);">0:10–0:55</div>
+      <div><strong style="color:var(--white);">Category walkthrough (all)</strong><br><span style="color:var(--grey);font-size:12px;">Work through all 12 categories in order. 3–4 minutes per category. Log what worked + what to improve. Assign owner to every recommendation before moving on.</span></div>
+    </div>
+    <div style="display:flex;gap:14px;">
+      <div style="min-width:70px;font-weight:700;color:var(--gold);">0:55–1:10</div>
+      <div><strong style="color:var(--white);">Priority ranking (group)</strong><br><span style="color:var(--grey);font-size:12px;">Identify top 3 high-impact improvements that must be applied to the next event. Mark as priority in log. Confirm owners and deadlines.</span></div>
+    </div>
+    <div style="display:flex;gap:14px;">
+      <div style="min-width:70px;font-weight:700;color:var(--gold);">1:10–1:25</div>
+      <div><strong style="color:var(--white);">Framework update decisions (PMO)</strong><br><span style="color:var(--grey);font-size:12px;">Which of the 6 frameworks needs updating based on this session? Agree edits. PMO updates within 5 business days.</span></div>
+    </div>
+    <div style="display:flex;gap:14px;">
+      <div style="min-width:70px;font-weight:700;color:var(--gold);">1:25–1:30</div>
+      <div><strong style="color:var(--white);">Close (PMO)</strong><br><span style="color:var(--grey);font-size:12px;">Confirm: all entries logged, all recommendations owned, next review date (W12 of next event). Share log with all attendees within 24hrs.</span></div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:32px;font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:16px;">
+  Tamara Communications PMO · Lessons Learned Log · Framework 6 of 6 · Facilitate within 10 days post-event · Review at next event W12 kickoff · 12 categories
+</div>
+
+<script>
+const CATS = ['Narrative','Stakeholder','Design','Legal','Announcement','Vendor','Budget','Logistics','PR/Media','Post-Event','In-Event Ops','Framework Gaps'];
+const CAT_COLORS = {
+  'Narrative':'#00A86B','Stakeholder':'#3B82F6','Design':'#00A86B','Legal':'#EF4444',
+  'Announcement':'#F5A623','Vendor':'#F97316','Budget':'#F97316','Logistics':'#A855F7',
+  'PR/Media':'#3B82F6','Post-Event':'#14B8A6','In-Event Ops':'#F5A623','Framework Gaps':'#6B7280'
+};
+
+function updateStats() {
+  const rows = document.querySelectorAll('#log-body tr[data-cat]');
+  let total=0, high=0, applied=0, pending=0;
+  const catSet = new Set();
+  rows.forEach(r => {
+    total++;
+    const cells = r.querySelectorAll('td');
+    if (cells[1] && cells[1].textContent.includes('High')) high++;
+    if (cells[6] && cells[6].textContent.includes('Yes')) applied++;
+    if (cells[6] && cells[6].textContent.includes('Pending')) pending++;
+    catSet.add(r.dataset.cat);
+  });
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-high').textContent = high;
+  document.getElementById('stat-applied').textContent = applied;
+  document.getElementById('stat-pending').textContent = pending;
+
+  // Cat grid
+  const grid = document.getElementById('cat-grid');
+  grid.innerHTML = '';
+  CATS.forEach(cat => {
+    const covered = catSet.has(cat);
+    const el = document.createElement('div');
+    el.style.cssText = `background:var(--card);border:1px solid ${covered?CAT_COLORS[cat]||'var(--green)':'var(--border)'};border-radius:4px;padding:10px 14px;display:flex;align-items:center;gap:8px;`;
+    el.innerHTML = `<div style="width:10px;height:10px;border-radius:50%;background:${covered?(CAT_COLORS[cat]||'var(--green)'):'var(--border)'};flex-shrink:0;"></div><span style="font-size:12px;color:${covered?'var(--white)':'var(--grey)'};">${cat}</span>${covered?'<span style="margin-left:auto;font-size:11px;color:var(--green);">✓</span>':'<span style="margin-left:auto;font-size:11px;color:var(--grey);">—</span>'}`;
+    grid.appendChild(el);
+  });
+}
+
+function addRow() {
+  const tbody = document.getElementById('log-body');
+  const tr = document.createElement('tr');
+  tr.setAttribute('data-cat','Narrative');
+  tr.innerHTML = `
+    <td>
+      <select class="cell-select" onchange="this.closest('tr').dataset.cat=this.value;updateStats();">
+        ${CATS.map(c=>`<option value="${c}">${c}</option>`).join('')}
+      </select>
+    </td>
+    <td>
+      <select class="cell-select">
+        <option value="High">High</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </td>
+    <td><textarea class="cell-area" rows="2" placeholder="What happened / what worked well..."></textarea></td>
+    <td><textarea class="cell-area" rows="2" placeholder="Root cause..."></textarea></td>
+    <td><textarea class="cell-area" rows="2" placeholder="Recommendation..."></textarea></td>
+    <td><textarea class="cell-area" rows="2" placeholder="Owner..."></textarea></td>
+    <td>
+      <select class="cell-select" onchange="updateStats();">
+        <option value="pending">⏳ Pending</option>
+        <option value="yes">✓ Yes</option>
+        <option value="no">✗ No</option>
+      </select>
+    </td>
+  `;
+  tbody.appendChild(tr);
+  updateStats();
+  tr.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function filterRows(btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filter = btn.dataset.filter;
+  document.querySelectorAll('#log-body tr[data-cat]').forEach(r=>{
+    r.style.display = (filter==='all'||r.dataset.cat===filter)?'':'none';
+  });
+}
+
+updateStats();
+</script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Framework 2 — RACI Master Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0A0E1A; --green: #00A86B; --dark-green: #007A4D;
+    --white: #FFFFFF; --gold: #F5A623; --grey: #8A9BB0;
+    --card: #141B2D; --border: #1E2D45;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--white); font-family: 'Carlito', Calibri, Arial, sans-serif; font-size: 13px; padding: 40px; }
+  h1 { font-size: 28px; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+  h2 { font-size: 15px; font-weight: 700; color: var(--white); margin: 28px 0 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .sub { font-size: 13px; color: var(--grey); margin-bottom: 24px; }
+  .instruction { background: var(--card); border-left: 4px solid var(--green); padding: 14px 18px; margin-bottom: 24px; font-size: 13px; color: var(--grey); line-height: 1.6; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 8px; }
+  thead tr { background: var(--green); }
+  thead th { color: #fff; font-weight: 700; font-size: 12px; padding: 8px 10px; text-align: center; border: 1px solid var(--border); white-space: nowrap; }
+  thead th.act-col { text-align: left; }
+  tbody tr:nth-child(odd) { background: var(--card); }
+  tbody tr:nth-child(even) { background: var(--bg); }
+  tbody td { color: var(--white); padding: 7px 10px; border: 1px solid var(--border); font-size: 12px; vertical-align: middle; }
+  tbody td.raci { text-align: center; font-weight: 700; }
+  .R { color: #F5A623; } .A { color: #00A86B; } .C { color: #3B82F6; } .I { color: #8A9BB0; }
+  .section-header { background: #0F1829 !important; }
+  .section-header td { color: var(--green) !important; font-weight: 700 !important; font-size: 13px !important; padding: 10px 10px !important; letter-spacing: 1px; }
+  .legend { display: flex; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dept-header { font-size: 11px; color: var(--grey); writing-mode: vertical-rl; transform: rotate(180deg); padding: 4px 0; }
+</style>
+</head>
+<body>
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#141B2D;border:1px solid #1E2D45;border-radius:4px;padding:8px 16px;font-size:13px;color:#8A9BB0;font-family:'Carlito',Calibri,Arial,sans-serif;margin-bottom:24px;transition:border-color 0.15s;position:sticky;top:0;z-index:100;" onmouseover="this.style.borderColor='#00A86B';this.style.color='#FFFFFF'" onmouseout="this.style.borderColor='#1E2D45';this.style.color='#8A9BB0'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Back to all deliverables
+  </a>
+
+
+<div style="font-size:11px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">TAMARA COMMUNICATIONS PMO — FRAMEWORK 2 OF 6</div>
+<h1>RACI Master Template</h1>
+<p class="sub">30 standard activities across 8 departments. Adapt to any sponsorship in under 2 hours by filling in names.</p>
+
+<div class="instruction">
+  <strong style="color:var(--white);">How to use:</strong> R = Responsible (does the work) · A = Accountable (owns the outcome, one per activity) · C = Consulted (input required before decision) · I = Informed (notified of outcome). Each activity must have exactly one A. Agree this matrix in W12 kickoff and do not change without CMO sign-off.
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#F5A623;"></div><span style="color:#F5A623;font-weight:700;">R</span><span style="color:var(--grey);"> — Responsible</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#00A86B;"></div><span style="color:#00A86B;font-weight:700;">A</span><span style="color:var(--grey);"> — Accountable</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#3B82F6;"></div><span style="color:#3B82F6;font-weight:700;">C</span><span style="color:var(--grey);"> — Consulted</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#8A9BB0;"></div><span style="color:#8A9BB0;font-weight:700;">I</span><span style="color:var(--grey);"> — Informed</span></div>
+</div>
+
+<!-- Name row for adaptation -->
+<table style="margin-bottom:20px;">
+  <thead>
+    <tr>
+      <th class="act-col" style="width:320px;">Role</th>
+      <th>PMO</th><th>CMO / Comms</th><th>CEO Office</th><th>Finance BP</th><th>Legal</th><th>Design &amp; Brand</th><th>HR &amp; People</th><th>Product</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="color:var(--grey);font-style:italic;">Name (fill in per event)</td>
+      <td style="text-align:center;color:var(--gold);font-style:italic;">—</td>
+      <td style="text-align:center;color:var(--gold);font-style:italic;">—</td>
+      <td style="text-align:center;color:var(--gold);font-style:italic;">—</td>
+      <td style="text-align:center;color:var(--gold);font-style:italic;">—</td>
+      <td style="text-align:center;color:var(--gold);font-style:italic;">—</td>
+      <td style="text-align:center;color:var(--gold);font-style:italic;">—</td>
+      <td style="text-align:center;color:var(--gold);font-style:italic;">—</td>
+      <td style="text-align:center;color:var(--gold);font-style:italic;">—</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);font-style:italic;">Dept color</td>
+      <td style="text-align:center;"><div style="width:14px;height:14px;border-radius:50%;background:#6B7280;margin:auto;"></div></td>
+      <td style="text-align:center;"><div style="width:14px;height:14px;border-radius:50%;background:#3B82F6;margin:auto;"></div></td>
+      <td style="text-align:center;"><div style="width:14px;height:14px;border-radius:50%;background:#F5A623;margin:auto;"></div></td>
+      <td style="text-align:center;"><div style="width:14px;height:14px;border-radius:50%;background:#F97316;margin:auto;"></div></td>
+      <td style="text-align:center;"><div style="width:14px;height:14px;border-radius:50%;background:#EF4444;margin:auto;"></div></td>
+      <td style="text-align:center;"><div style="width:14px;height:14px;border-radius:50%;background:#00A86B;margin:auto;"></div></td>
+      <td style="text-align:center;"><div style="width:14px;height:14px;border-radius:50%;background:#A855F7;margin:auto;"></div></td>
+      <td style="text-align:center;"><div style="width:14px;height:14px;border-radius:50%;background:#14B8A6;margin:auto;"></div></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- RACI Matrix -->
+<table>
+  <thead>
+    <tr>
+      <th class="act-col" style="width:320px;">Activity</th>
+      <th style="width:60px;">Deadline</th>
+      <th style="width:55px;">PMO</th>
+      <th style="width:75px;">CMO / Comms</th>
+      <th style="width:65px;">CEO Office</th>
+      <th style="width:65px;">Finance BP</th>
+      <th style="width:55px;">Legal</th>
+      <th style="width:75px;">Design &amp; Brand</th>
+      <th style="width:65px;">HR &amp; People</th>
+      <th style="width:60px;">Product</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- SECTION: STRATEGIC SETUP -->
+    <tr class="section-header"><td colspan="10">01 — STRATEGIC SETUP</td></tr>
+    <tr>
+      <td>Sponsorship evaluation scorecard completed</td>
+      <td style="color:var(--grey);">W12</td>
+      <td class="raci R">R</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci I">I</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Sponsorship agreement review + sign-off</td>
+      <td style="color:var(--grey);">W12</td>
+      <td class="raci R">R</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci C">C</td><td class="raci R">R</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Budget code confirmed and tracker activated</td>
+      <td style="color:var(--grey);">W12</td>
+      <td class="raci R">R</td><td class="raci I">I</td><td class="raci I">I</td><td class="raci A">A</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>RACI matrix agreed by all departments</td>
+      <td style="color:var(--grey);">W12</td>
+      <td class="raci A">A</td><td class="raci R">R</td><td class="raci C">C</td><td class="raci I">I</td><td class="raci I">I</td><td class="raci I">I</td><td class="raci I">I</td><td class="raci I">I</td>
+    </tr>
+
+    <!-- SECTION: NARRATIVE + COMMUNICATIONS -->
+    <tr class="section-header"><td colspan="10">02 — NARRATIVE + COMMUNICATIONS</td></tr>
+    <tr>
+      <td>Event narrative / messaging one-pager drafted</td>
+      <td style="color:var(--grey);">W10</td>
+      <td class="raci C">C</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci C">C</td>
+    </tr>
+    <tr>
+      <td>Narrative signed off by CMO</td>
+      <td style="color:var(--grey);">W10</td>
+      <td class="raci I">I</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>PR plan + media list approved</td>
+      <td style="color:var(--grey);">W8</td>
+      <td class="raci I">I</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Thought leadership article drafted + approved</td>
+      <td style="color:var(--grey);">W8</td>
+      <td class="raci I">I</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci">—</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Press release (pre-event) drafted</td>
+      <td style="color:var(--grey);">W7</td>
+      <td class="raci I">I</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci">—</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Press release legal clearance</td>
+      <td style="color:var(--grey);">W6</td>
+      <td class="raci I">I</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci">—</td><td class="raci R">R</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+
+    <!-- SECTION: CEO + SPEAKING -->
+    <tr class="section-header"><td colspan="10">03 — CEO + SPEAKING PROGRAMME</td></tr>
+    <tr>
+      <td>Keynote topic confirmed with Tahaluf</td>
+      <td style="color:var(--gold);font-weight:700;">W8 ⚠</td>
+      <td class="raci R">R</td><td class="raci C">C</td><td class="raci A">A</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Speaker bio + headshot submitted to Tahaluf</td>
+      <td style="color:var(--grey);">W8</td>
+      <td class="raci R">R</td><td class="raci I">I</td><td class="raci A">A</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>CEO keynote deck drafted + approved</td>
+      <td style="color:var(--grey);">W5</td>
+      <td class="raci C">C</td><td class="raci C">C</td><td class="raci A">A</td><td class="raci">—</td><td class="raci C">C</td><td class="raci C">C</td><td class="raci">—</td><td class="raci C">C</td>
+    </tr>
+    <tr>
+      <td>CEO briefing pack prepared (Day-of)</td>
+      <td style="color:var(--grey);">W2</td>
+      <td class="raci R">R</td><td class="raci C">C</td><td class="raci A">A</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>CEO rehearsal completed</td>
+      <td style="color:var(--grey);">W2</td>
+      <td class="raci R">R</td><td class="raci C">C</td><td class="raci A">A</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+
+    <!-- SECTION: DESIGN + BOOTH -->
+    <tr class="section-header"><td colspan="10">04 — DESIGN + BOOTH</td></tr>
+    <tr>
+      <td>Design brief issued to Design team</td>
+      <td style="color:var(--grey);">W10</td>
+      <td class="raci R">R</td><td class="raci A">A</td><td class="raci I">I</td><td class="raci">—</td><td class="raci">—</td><td class="raci R">R</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Booth concept approved internally</td>
+      <td style="color:var(--grey);">W8</td>
+      <td class="raci R">R</td><td class="raci A">A</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci R">R</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>All assets submitted to Tahaluf for brand approval</td>
+      <td style="color:var(--gold);font-weight:700;">W6 ⚠</td>
+      <td class="raci A">A</td><td class="raci C">C</td><td class="raci I">I</td><td class="raci">—</td><td class="raci">—</td><td class="raci R">R</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Tahaluf brand approval received</td>
+      <td style="color:var(--grey);">W4</td>
+      <td class="raci A">A</td><td class="raci I">I</td><td class="raci I">I</td><td class="raci">—</td><td class="raci">—</td><td class="raci R">R</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Booth build vendor on-site supervision</td>
+      <td style="color:var(--grey);">W1</td>
+      <td class="raci A">A</td><td class="raci I">I</td><td class="raci I">I</td><td class="raci">—</td><td class="raci">—</td><td class="raci R">R</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+
+    <!-- SECTION: LOGISTICS + HR -->
+    <tr class="section-header"><td colspan="10">05 — LOGISTICS + PEOPLE</td></tr>
+    <tr>
+      <td>Badge allocation strategy approved</td>
+      <td style="color:var(--grey);">W10</td>
+      <td class="raci R">R</td><td class="raci C">C</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci A">A</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Badge names list (30 passes) submitted to Tahaluf</td>
+      <td style="color:var(--grey);">W4</td>
+      <td class="raci R">R</td><td class="raci I">I</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci A">A</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Travel + accommodation booked (all attendees)</td>
+      <td style="color:var(--grey);">W6</td>
+      <td class="raci I">I</td><td class="raci I">I</td><td class="raci C">C</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci A">A</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Attendee briefing packs distributed</td>
+      <td style="color:var(--grey);">W1</td>
+      <td class="raci R">R</td><td class="raci C">C</td><td class="raci I">I</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci A">A</td><td class="raci">—</td>
+    </tr>
+
+    <!-- SECTION: ANNOUNCEMENT -->
+    <tr class="section-header"><td colspan="10">06 — ANNOUNCEMENT EXECUTION</td></tr>
+    <tr>
+      <td>Announcement decision made</td>
+      <td style="color:var(--grey);">W8</td>
+      <td class="raci I">I</td><td class="raci C">C</td><td class="raci A">A</td><td class="raci">—</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci C">C</td>
+    </tr>
+    <tr>
+      <td>Announcement legal clearance obtained</td>
+      <td style="color:var(--grey);">W4</td>
+      <td class="raci I">I</td><td class="raci C">C</td><td class="raci A">A</td><td class="raci">—</td><td class="raci R">R</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>15-min announcement sequence agreed + briefed</td>
+      <td style="color:var(--gold);font-weight:700;">D1-1d ⚠</td>
+      <td class="raci A">A</td><td class="raci R">R</td><td class="raci R">R</td><td class="raci">—</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Announcement live (press release + social + media)</td>
+      <td style="color:var(--gold);font-weight:700;">D1 09:00 ⚠</td>
+      <td class="raci A">A</td><td class="raci R">R</td><td class="raci R">R</td><td class="raci">—</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+
+    <!-- SECTION: POST-EVENT -->
+    <tr class="section-header"><td colspan="10">07 — POST-EVENT CLOSE</td></tr>
+    <tr>
+      <td>Post-event report to leadership</td>
+      <td style="color:var(--grey);">P+7d</td>
+      <td class="raci A">A</td><td class="raci R">R</td><td class="raci I">I</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Budget vs actual variance report</td>
+      <td style="color:var(--grey);">P+7d</td>
+      <td class="raci C">C</td><td class="raci I">I</td><td class="raci I">I</td><td class="raci A">A</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Lessons Learned session facilitated</td>
+      <td style="color:var(--grey);">P+10d</td>
+      <td class="raci A">A</td><td class="raci R">R</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td><td class="raci C">C</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+    <tr>
+      <td>Updated frameworks handed to Comms function</td>
+      <td style="color:var(--grey);">P+14d</td>
+      <td class="raci A">A</td><td class="raci R">R</td><td class="raci I">I</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td><td class="raci">—</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div style="margin-top:32px;font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:16px;">
+  Tamara Communications PMO · RACI Master Template · Framework 2 of 6 · 30 activities · 8 departments · Adapt in W12 kickoff
+</div>
+</body>
+</html>

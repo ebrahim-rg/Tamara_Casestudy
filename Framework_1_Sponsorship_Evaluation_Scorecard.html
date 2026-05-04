@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Framework 1 — Sponsorship Evaluation Scorecard</title>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0A0E1A; --green: #00A86B; --dark-green: #007A4D;
+    --white: #FFFFFF; --gold: #F5A623; --grey: #8A9BB0;
+    --card: #141B2D; --border: #1E2D45;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--white); font-family: 'Carlito', Calibri, Arial, sans-serif; font-size: 14px; padding: 40px; }
+  h1 { font-size: 28px; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+  h2 { font-size: 16px; font-weight: 700; color: var(--white); margin: 24px 0 8px; }
+  .sub { font-size: 13px; color: var(--grey); margin-bottom: 28px; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 24px; }
+  thead tr { background: var(--green); }
+  thead th { color: #fff; font-weight: 700; font-size: 13px; padding: 9px 12px; text-align: left; border: 1px solid var(--border); }
+  tbody tr:nth-child(odd) { background: var(--card); }
+  tbody tr:nth-child(even) { background: var(--bg); }
+  tbody td { color: var(--white); padding: 8px 12px; border: 1px solid var(--border); font-size: 13px; vertical-align: top; }
+  .score-cell { text-align: center; font-weight: 700; color: var(--gold); font-size: 15px; }
+  .weight-cell { text-align: center; color: var(--grey); }
+  .instruction { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--green); padding: 16px 20px; margin-bottom: 24px; font-size: 13px; color: var(--grey); line-height: 1.6; }
+  .tier-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+  .tier-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 12px 18px; flex: 1; min-width: 140px; }
+  .tier-name { font-size: 14px; font-weight: 700; color: var(--white); }
+  .tier-range { font-size: 20px; font-weight: 700; color: var(--gold); }
+  .tier-rec { font-size: 12px; color: var(--grey); margin-top: 4px; }
+  .total-row td { font-weight: 700; color: var(--gold); background: #0F1829 !important; }
+  .input-score { background: transparent; border: 1px solid var(--green); color: var(--gold); font-size: 15px; font-weight: 700; width: 50px; text-align: center; padding: 3px; border-radius: 3px; font-family: inherit; }
+  .weighted-display { color: var(--green); font-weight: 700; }
+  #total-score { font-size: 32px; font-weight: 700; color: var(--gold); }
+  #total-label { font-size: 14px; color: var(--grey); }
+  #tier-result { font-size: 18px; font-weight: 700; color: var(--green); margin-top: 4px; }
+  .result-box { background: var(--card); border: 1px solid var(--green); border-radius: 6px; padding: 20px 28px; display: inline-block; margin-bottom: 24px; }
+  .label { font-size: 11px; color: var(--grey); margin-bottom: 2px; }
+</style>
+</head>
+<body>
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#141B2D;border:1px solid #1E2D45;border-radius:4px;padding:8px 16px;font-size:13px;color:#8A9BB0;font-family:'Carlito',Calibri,Arial,sans-serif;margin-bottom:24px;transition:border-color 0.15s;position:sticky;top:0;z-index:100;" onmouseover="this.style.borderColor='#00A86B';this.style.color='#FFFFFF'" onmouseout="this.style.borderColor='#1E2D45';this.style.color='#8A9BB0'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Back to all deliverables
+  </a>
+
+
+<div style="font-size:11px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">TAMARA COMMUNICATIONS PMO — FRAMEWORK 1 OF 6</div>
+<h1>Sponsorship Evaluation Scorecard</h1>
+<p class="sub">Objective scoring model for sponsorship investment decisions. Complete before any budget commitment.</p>
+
+<div class="instruction">
+  <strong style="color:var(--white);">Instructions:</strong> Score each criterion 1–5, then multiply by the weight. Sum all weighted scores to get the Total Score. Compare against the Tier Recommendation table. This scorecard must be completed and approved by the CMO before any sponsorship is progressed beyond initial discussion.
+</div>
+
+<!-- Live Score Box -->
+<div class="result-box">
+  <div class="label">TOTAL WEIGHTED SCORE</div>
+  <div id="total-score">—</div>
+  <div id="total-label">out of 35.0 maximum</div>
+  <div id="tier-result">Complete scoring below</div>
+</div>
+
+<!-- Tier Recommendation -->
+<h2>Tier Recommendation Guide</h2>
+<div class="tier-row">
+  <div class="tier-card">
+    <div class="tier-name">FOUNDING PARTNER</div>
+    <div class="tier-range">30–35</div>
+    <div class="tier-rec">Maximum investment. Full activation. All resources mobilized.</div>
+  </div>
+  <div class="tier-card">
+    <div class="tier-name">STRATEGIC PARTNER</div>
+    <div class="tier-range">24–29</div>
+    <div class="tier-rec">Significant investment. Selective activation. Key moments only.</div>
+  </div>
+  <div class="tier-card">
+    <div class="tier-name">GOLD / EXHIBITOR</div>
+    <div class="tier-range">18–23</div>
+    <div class="tier-rec">Moderate investment. Booth + core benefits only.</div>
+  </div>
+  <div class="tier-card">
+    <div class="tier-name">ATTEND (NO SPONSORSHIP)</div>
+    <div class="tier-range">12–17</div>
+    <div class="tier-rec">Attend for intelligence only. No sponsorship spend.</div>
+  </div>
+  <div class="tier-card">
+    <div class="tier-name">DECLINE</div>
+    <div class="tier-range">0–11</div>
+    <div class="tier-rec">Do not attend. Resources better deployed elsewhere.</div>
+  </div>
+</div>
+
+<!-- Scoring Table -->
+<h2>Scoring Criteria</h2>
+<table id="scorecard">
+  <thead>
+    <tr>
+      <th style="width:30px;">#</th>
+      <th>Criterion</th>
+      <th>Scoring Guide (1–5)</th>
+      <th style="width:80px;">Weight</th>
+      <th style="width:90px;">Score (1–5)</th>
+      <th style="width:100px;">Weighted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="color:var(--grey);">1</td>
+      <td>
+        <strong>Audience Alignment</strong><br>
+        <span style="color:var(--grey);font-size:12px;">Are Tamara's primary audiences (investors, regulators, merchants, media) present and reachable?</span>
+      </td>
+      <td style="font-size:12px;color:var(--grey);">1=Wrong audience · 3=Partial overlap · 5=All primary audiences present</td>
+      <td class="weight-cell" data-weight="1.0">×1.0</td>
+      <td class="score-cell"><input class="input-score" type="number" min="1" max="5" data-row="0" placeholder="—"/></td>
+      <td class="weighted-display" id="w0">—</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">2</td>
+      <td>
+        <strong>Narrative Fit</strong><br>
+        <span style="color:var(--grey);font-size:12px;">Does the event's theme and reputation align with Tamara's current strategic narrative?</span>
+      </td>
+      <td style="font-size:12px;color:var(--grey);">1=No fit · 3=Adjacent · 5=Perfect category match</td>
+      <td class="weight-cell" data-weight="1.0">×1.0</td>
+      <td class="score-cell"><input class="input-score" type="number" min="1" max="5" data-row="1" placeholder="—"/></td>
+      <td class="weighted-display" id="w1">—</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">3</td>
+      <td>
+        <strong>Geographic + Market Relevance</strong><br>
+        <span style="color:var(--grey);font-size:12px;">Is this event in a market where Tamara is active or planning to enter?</span>
+      </td>
+      <td style="font-size:12px;color:var(--grey);">1=Irrelevant market · 3=Adjacent market · 5=Core market (KSA/UAE)</td>
+      <td class="weight-cell" data-weight="0.75">×0.75</td>
+      <td class="score-cell"><input class="input-score" type="number" min="1" max="5" data-row="2" placeholder="—"/></td>
+      <td class="weighted-display" id="w2">—</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">4</td>
+      <td>
+        <strong>Announcement / Milestone Opportunity</strong><br>
+        <span style="color:var(--grey);font-size:12px;">Is there a major Tamara announcement or milestone that can be amplified at this event?</span>
+      </td>
+      <td style="font-size:12px;color:var(--grey);">1=No announcement · 3=Minor news · 5=Major milestone (funding, license, product launch)</td>
+      <td class="weight-cell" data-weight="1.0">×1.0</td>
+      <td class="score-cell"><input class="input-score" type="number" min="1" max="5" data-row="3" placeholder="—"/></td>
+      <td class="weighted-display" id="w3">—</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">5</td>
+      <td>
+        <strong>Competitive Landscape</strong><br>
+        <span style="color:var(--grey);font-size:12px;">What is Tamara's positioning relative to competitors at this event?</span>
+      </td>
+      <td style="font-size:12px;color:var(--grey);">1=Competitors dominate · 3=Level playing field · 5=Home advantage / only regional leader</td>
+      <td class="weight-cell" data-weight="0.75">×0.75</td>
+      <td class="score-cell"><input class="input-score" type="number" min="1" max="5" data-row="4" placeholder="—"/></td>
+      <td class="weighted-display" id="w4">—</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">6</td>
+      <td>
+        <strong>ROI Measurability</strong><br>
+        <span style="color:var(--grey);font-size:12px;">Can we set clear, measurable targets and track them before/during/after the event?</span>
+      </td>
+      <td style="font-size:12px;color:var(--grey);">1=Unmeasurable · 3=Partial metrics available · 5=Full ROI framework applicable</td>
+      <td class="weight-cell" data-weight="0.75">×0.75</td>
+      <td class="score-cell"><input class="input-score" type="number" min="1" max="5" data-row="5" placeholder="—"/></td>
+      <td class="weighted-display" id="w5">—</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">7</td>
+      <td>
+        <strong>Operational Feasibility</strong><br>
+        <span style="color:var(--grey);font-size:12px;">Given current team capacity and budget, can Tamara execute this event at the required standard?</span>
+      </td>
+      <td style="font-size:12px;color:var(--grey);">1=Team/budget inadequate · 3=Feasible with stretching · 5=Fully resourced and ready</td>
+      <td class="weight-cell" data-weight="0.75">×0.75</td>
+      <td class="score-cell"><input class="input-score" type="number" min="1" max="5" data-row="6" placeholder="—"/></td>
+      <td class="weighted-display" id="w6">—</td>
+    </tr>
+    <tr class="total-row">
+      <td colspan="4" style="text-align:right;font-size:14px;">TOTAL WEIGHTED SCORE</td>
+      <td class="score-cell">—</td>
+      <td id="total-cell" style="font-size:18px;font-weight:700;color:var(--gold);padding:10px 12px;">—</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Notes section -->
+<h2>Evaluation Notes</h2>
+<table>
+  <thead><tr><th>Field</th><th>Entry</th></tr></thead>
+  <tbody>
+    <tr><td style="width:200px;">Event Name</td><td style="color:var(--grey);font-style:italic;">—</td></tr>
+    <tr><td>Event Date + Location</td><td style="color:var(--grey);font-style:italic;">—</td></tr>
+    <tr><td>Sponsorship Tier Proposed</td><td style="color:var(--grey);font-style:italic;">—</td></tr>
+    <tr><td>Estimated Investment</td><td style="color:var(--grey);font-style:italic;">—</td></tr>
+    <tr><td>Evaluated by</td><td style="color:var(--grey);font-style:italic;">—</td></tr>
+    <tr><td>CMO Approval</td><td style="color:var(--grey);font-style:italic;">☐ Pending &nbsp;&nbsp; ☐ Approved &nbsp;&nbsp; ☐ Declined</td></tr>
+    <tr><td>Key Rationale</td><td style="color:var(--grey);font-style:italic;">—</td></tr>
+  </tbody>
+</table>
+
+<div style="margin-top:32px;font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:16px;">
+  Tamara Communications PMO · Sponsorship Evaluation Scorecard · Framework 1 of 6 · Built for Money 20/20 ME 2025 · Scalable to all future sponsorships
+</div>
+
+<script>
+const weights = [1.0, 1.0, 0.75, 1.0, 0.75, 0.75, 0.75];
+const maxScore = weights.reduce((a,b)=>a+b*5,0);
+const tiers = [
+  [30, 35, 'FOUNDING PARTNER — Full activation recommended'],
+  [24, 29, 'STRATEGIC PARTNER — Selective activation'],
+  [18, 23, 'GOLD / EXHIBITOR — Booth + core benefits only'],
+  [12, 17, 'ATTEND (NO SPONSORSHIP) — Intelligence only'],
+  [0, 11, 'DECLINE — Resources better deployed elsewhere'],
+];
+
+document.querySelectorAll('.input-score').forEach(input => {
+  input.addEventListener('input', recalc);
+});
+
+function recalc() {
+  let total = 0;
+  let allFilled = true;
+  weights.forEach((w, i) => {
+    const inp = document.querySelector(`[data-row="${i}"]`);
+    const val = parseFloat(inp.value);
+    const cell = document.getElementById(`w${i}`);
+    if (!isNaN(val) && val >= 1 && val <= 5) {
+      const weighted = (val * w).toFixed(2);
+      cell.textContent = weighted;
+      total += val * w;
+    } else {
+      cell.textContent = '—';
+      allFilled = false;
+    }
+  });
+  const totalEl = document.getElementById('total-score');
+  const totalCell = document.getElementById('total-cell');
+  const tierEl = document.getElementById('tier-result');
+  if (!allFilled) {
+    totalEl.textContent = total.toFixed(2);
+    totalCell.textContent = total.toFixed(2);
+    tierEl.textContent = 'Complete all criteria';
+    return;
+  }
+  totalEl.textContent = total.toFixed(2);
+  totalCell.textContent = total.toFixed(2);
+  const tier = tiers.find(([min,max]) => total >= min && total <= max);
+  tierEl.textContent = tier ? tier[2] : '—';
+}
+</script>
+</body>
+</html>

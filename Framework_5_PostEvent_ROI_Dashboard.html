@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Framework 5 — Post-Event ROI Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:#0A0E1A;--green:#00A86B;--dark-green:#007A4D;
+    --white:#FFFFFF;--gold:#F5A623;--grey:#8A9BB0;
+    --card:#141B2D;--border:#1E2D45;
+    --red:#EF4444;--blue:#3B82F6;--orange:#F97316;--purple:#A855F7;
+    --rag-green:#00A86B;--rag-amber:#F5A623;--rag-red:#EF4444;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;font-size:13px;padding:40px;}
+  h1{font-size:28px;font-weight:700;color:var(--green);margin-bottom:4px;}
+  h2{font-size:15px;font-weight:700;color:var(--white);margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+  .sub{font-size:13px;color:var(--grey);margin-bottom:24px;}
+  .instruction{background:var(--card);border-left:4px solid var(--green);padding:14px 18px;margin-bottom:24px;font-size:13px;color:var(--grey);line-height:1.6;}
+  table{border-collapse:collapse;width:100%;margin-bottom:8px;}
+  thead tr{background:var(--green);}
+  thead th{color:#fff;font-weight:700;font-size:12px;padding:8px 10px;text-align:left;border:1px solid var(--border);}
+  tbody tr:nth-child(odd){background:var(--card);}
+  tbody tr:nth-child(even){background:var(--bg);}
+  tbody td{color:var(--white);padding:7px 10px;border:1px solid var(--border);font-size:12px;vertical-align:middle;}
+  .target-col{color:var(--gold);font-weight:700;text-align:center;}
+  .actual-input{background:transparent;border:1px solid var(--green);color:var(--white);font-size:12px;width:90px;padding:3px 6px;border-radius:3px;font-family:inherit;text-align:center;}
+  .actual-input:focus{outline:none;border-color:var(--gold);}
+  .rag{display:inline-block;width:14px;height:14px;border-radius:50%;margin:auto;}
+  .rag-cell{text-align:center;}
+  .section-hdr{background:#0F1829!important;}
+  .section-hdr td{color:var(--green)!important;font-weight:700!important;font-size:13px!important;padding:9px 10px!important;letter-spacing:1px;}
+  .cat-header{padding:6px 12px;border-radius:3px 3px 0 0;font-size:13px;font-weight:700;color:#fff;margin-top:20px;display:flex;align-items:center;gap:10px;}
+  .summary-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:18px 22px;display:flex;flex-direction:column;gap:4px;}
+  .summary-score{font-size:32px;font-weight:700;color:var(--gold);}
+  .summary-label{font-size:12px;color:var(--grey);}
+  .summary-status{font-size:14px;font-weight:700;margin-top:4px;}
+  .notes-area{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 12px;font-size:12px;color:var(--grey);font-style:italic;margin-top:6px;min-height:36px;}
+</style>
+</head>
+<body>
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#141B2D;border:1px solid #1E2D45;border-radius:4px;padding:8px 16px;font-size:13px;color:#8A9BB0;font-family:'Carlito',Calibri,Arial,sans-serif;margin-bottom:24px;transition:border-color 0.15s;position:sticky;top:0;z-index:100;" onmouseover="this.style.borderColor='#00A86B';this.style.color='#FFFFFF'" onmouseout="this.style.borderColor='#1E2D45';this.style.color='#8A9BB0'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Back to all deliverables
+  </a>
+
+
+<div style="font-size:11px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">TAMARA COMMUNICATIONS PMO — FRAMEWORK 5 OF 6</div>
+<h1>Post-Event ROI Dashboard</h1>
+<p class="sub">15 metrics across 4 categories. Pre-agreed targets set before the event. Actuals filled in post-event. RAG status auto-generates.</p>
+
+<div class="instruction">
+  <strong style="color:var(--white);">How to use:</strong> Targets in the yellow column are SET AND LOCKED before the event in W12. After the event, fill in the Actual column. RAG status: <span style="color:var(--rag-green);font-weight:700;">● Green</span> = at or above target · <span style="color:var(--rag-amber);font-weight:700;">● Amber</span> = within 20% below target · <span style="color:var(--rag-red);font-weight:700;">● Red</span> = more than 20% below target. This dashboard is the basis for the leadership post-event report — fill in before the debrief meeting.
+</div>
+
+<!-- Event header -->
+<table style="margin-bottom:20px;">
+  <tbody>
+    <tr>
+      <td style="width:160px;color:var(--grey);">Event</td>
+      <td style="color:var(--gold);font-weight:700;">Money 20/20 Middle East 2025</td>
+      <td style="width:160px;color:var(--grey);">Date</td>
+      <td style="color:var(--gold);font-weight:700;">Sep 15–17, 2025 · Riyadh</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">Report completed by</td>
+      <td style="color:var(--grey);font-style:italic;">PMO Lead — Qadr Arslan</td>
+      <td style="color:var(--grey);">Report date</td>
+      <td style="color:var(--grey);font-style:italic;" id="report-date">—</td>
+    </tr>
+    <tr>
+      <td style="color:var(--grey);">Overall RAG Status</td>
+      <td id="overall-status" colspan="3" style="font-weight:700;color:var(--grey);">Complete dashboard to generate</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Summary cards -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;">
+  <div class="summary-card">
+    <div class="summary-label">BRAND ROI</div>
+    <div class="summary-score" id="brand-score">—</div>
+    <div class="summary-label">metrics at/above target</div>
+    <div class="summary-status" id="brand-status">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-label">COMMERCIAL ROI</div>
+    <div class="summary-score" id="commercial-score">—</div>
+    <div class="summary-label">metrics at/above target</div>
+    <div class="summary-status" id="commercial-status">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-label">OPERATIONAL ROI</div>
+    <div class="summary-score" id="operational-score">—</div>
+    <div class="summary-label">metrics at/above target</div>
+    <div class="summary-status" id="operational-status">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-label">STRATEGIC ROI</div>
+    <div class="summary-score" id="strategic-score">—</div>
+    <div class="summary-label">metrics at/above target</div>
+    <div class="summary-status" id="strategic-status">—</div>
+  </div>
+</div>
+
+<!-- Q1: Brand ROI -->
+<div class="cat-header" style="background:#3B82F6;">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+  BRAND ROI
+</div>
+<table>
+  <thead>
+    <tr><th style="width:280px;">Metric</th><th style="width:100px;">Target</th><th style="width:110px;">Actual</th><th style="width:60px;">RAG</th><th>How Measured</th><th style="width:100px;">Measured When</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tier-1 media placements</td>
+      <td class="target-col">15+</td>
+      <td><input class="actual-input" type="number" data-cat="brand" data-target="15" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-brand-0" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Meltwater / Brandwatch — press clipping log</td>
+      <td style="color:var(--grey);">2 weeks post</td>
+    </tr>
+    <tr>
+      <td>Total media impressions</td>
+      <td class="target-col">50M+</td>
+      <td><input class="actual-input" type="text" data-cat="brand" data-target="50000000" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-brand-1" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Media monitoring platform — cumulative reach</td>
+      <td style="color:var(--grey);">2 weeks post</td>
+    </tr>
+    <tr>
+      <td>Share of voice vs Tabby (%)</td>
+      <td class="target-col">&gt;60%</td>
+      <td><input class="actual-input" type="number" data-cat="brand" data-target="60" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-brand-2" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Meltwater share-of-voice report (during + 2 wks)</td>
+      <td style="color:var(--grey);">During + 2 wks</td>
+    </tr>
+    <tr>
+      <td>CEO keynote video views</td>
+      <td class="target-col">500K+</td>
+      <td><input class="actual-input" type="number" data-cat="brand" data-target="500000" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-brand-3" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">LinkedIn analytics + YouTube analytics</td>
+      <td style="color:var(--grey);">30 days post</td>
+    </tr>
+    <tr>
+      <td>"Super-app" in Tamara coverage (%)</td>
+      <td class="target-col">&gt;60%</td>
+      <td><input class="actual-input" type="number" data-cat="brand" data-target="60" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-brand-4" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Media monitoring — keyword analysis</td>
+      <td style="color:var(--grey);">2 weeks post</td>
+    </tr>
+  </tbody>
+</table>
+<div class="notes-area" contenteditable="true">Brand ROI notes: </div>
+
+<!-- Q2: Commercial ROI -->
+<div class="cat-header" style="background:var(--green);margin-top:20px;">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M3.5 18.5L9.5 12.5L13.5 16.5L22 6.92L20.59 5.51L13.5 13.67L9.5 9.67L2 17.17L3.5 18.5Z"/></svg>
+  COMMERCIAL ROI
+</div>
+<table>
+  <thead>
+    <tr><th style="width:280px;">Metric</th><th style="width:100px;">Target</th><th style="width:110px;">Actual</th><th style="width:60px;">RAG</th><th>How Measured</th><th style="width:100px;">Measured When</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pre-scheduled meetings executed</td>
+      <td class="target-col">10/10 (100%)</td>
+      <td><input class="actual-input" type="number" data-cat="commercial" data-target="10" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-commercial-0" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Meeting tracker (PMO log)</td>
+      <td style="color:var(--grey);">Day 3</td>
+    </tr>
+    <tr>
+      <td>New investor conversations (qualified)</td>
+      <td class="target-col">5+</td>
+      <td><input class="actual-input" type="number" data-cat="commercial" data-target="5" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-commercial-1" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">CRM (Salesforce) — investor stage</td>
+      <td style="color:var(--grey);">1 week post</td>
+    </tr>
+    <tr>
+      <td>Merchant leads captured (qualified)</td>
+      <td class="target-col">25+</td>
+      <td><input class="actual-input" type="number" data-cat="commercial" data-target="25" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-commercial-2" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">CRM — merchant pipeline</td>
+      <td style="color:var(--grey);">1 week post</td>
+    </tr>
+    <tr>
+      <td>Announcement press pickups in 72hrs</td>
+      <td class="target-col">20+</td>
+      <td><input class="actual-input" type="number" data-cat="commercial" data-target="20" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-commercial-3" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Media monitoring — 72hr window</td>
+      <td style="color:var(--grey);">72hrs post</td>
+    </tr>
+    <tr>
+      <td>Leads advancing to next stage (30d)</td>
+      <td class="target-col">5+</td>
+      <td><input class="actual-input" type="number" data-cat="commercial" data-target="5" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-commercial-4" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">CRM — pipeline progression</td>
+      <td style="color:var(--grey);">30 days post</td>
+    </tr>
+  </tbody>
+</table>
+<div class="notes-area" contenteditable="true">Commercial ROI notes: </div>
+
+<!-- Q3: Operational ROI -->
+<div class="cat-header" style="background:var(--orange);margin-top:20px;">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19 3H5C3.89 3 3 3.89 3 5V19C3 20.11 3.89 21 5 21H19C20.11 21 21 20.11 21 19V5C21 3.89 20.11 3 19 3M19 19H5V5H19V19M17 11H13V7H11V11H7V13H11V17H13V13H17V11Z"/></svg>
+  OPERATIONAL ROI
+</div>
+<table>
+  <thead>
+    <tr><th style="width:280px;">Metric</th><th style="width:100px;">Target</th><th style="width:110px;">Actual</th><th style="width:60px;">RAG</th><th>How Measured</th><th style="width:100px;">Measured When</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Budget variance (%)</td>
+      <td class="target-col">&lt;5%</td>
+      <td><input class="actual-input" type="number" data-cat="operational" data-target="5" data-mode="lte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-operational-0" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Finance tracker — final vs budget</td>
+      <td style="color:var(--grey);">2 weeks post</td>
+    </tr>
+    <tr>
+      <td>Founding Partner benefits activated (%)</td>
+      <td class="target-col">100%</td>
+      <td><input class="actual-input" type="number" data-cat="operational" data-target="100" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-operational-1" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Sponsorship activation audit checklist (30 items)</td>
+      <td style="color:var(--grey);">End of event</td>
+    </tr>
+    <tr>
+      <td>Design assets approved first submission (%)</td>
+      <td class="target-col">&gt;80%</td>
+      <td><input class="actual-input" type="number" data-cat="operational" data-target="80" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-operational-2" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Tahaluf approval log (PMO records)</td>
+      <td style="color:var(--grey);">W4</td>
+    </tr>
+    <tr>
+      <td>P1/P2 issues resolved within SLA (%)</td>
+      <td class="target-col">&gt;95%</td>
+      <td><input class="actual-input" type="number" data-cat="operational" data-target="95" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-operational-3" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Live Issue Log — SLA compliance</td>
+      <td style="color:var(--grey);">End of event</td>
+    </tr>
+    <tr>
+      <td>Pre-scheduled meetings fully executed (%)</td>
+      <td class="target-col">100%</td>
+      <td><input class="actual-input" type="number" data-cat="operational" data-target="100" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-operational-4" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Meeting tracker</td>
+      <td style="color:var(--grey);">Day 3</td>
+    </tr>
+  </tbody>
+</table>
+<div class="notes-area" contenteditable="true">Operational ROI notes: </div>
+
+<!-- Q4: Strategic ROI -->
+<div class="cat-header" style="background:var(--purple);margin-top:20px;">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+  STRATEGIC ROI
+</div>
+<table>
+  <thead>
+    <tr><th style="width:280px;">Metric</th><th style="width:100px;">Target</th><th style="width:110px;">Actual</th><th style="width:60px;">RAG</th><th>How Measured</th><th style="width:100px;">Measured When</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regulatory touchpoints (SAMA, CMA, IA)</td>
+      <td class="target-col">All 3</td>
+      <td><input class="actual-input" type="number" data-cat="strategic" data-target="3" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-strategic-0" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Stakeholder log (PMO)</td>
+      <td style="color:var(--grey);">During event</td>
+    </tr>
+    <tr>
+      <td>CEO narrative consistency score (%)</td>
+      <td class="target-col">&gt;90%</td>
+      <td><input class="actual-input" type="number" data-cat="strategic" data-target="90" data-mode="gte" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-strategic-1" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Comms team review — interview/speech audit</td>
+      <td style="color:var(--grey);">Post event</td>
+    </tr>
+    <tr>
+      <td>Leadership satisfaction score (/5)</td>
+      <td class="target-col">&gt;4/5</td>
+      <td><input class="actual-input" type="number" data-cat="strategic" data-target="4" data-mode="gte" step="0.1" placeholder="—"/></td>
+      <td class="rag-cell"><div class="rag" id="rag-strategic-2" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Internal survey (CMO, CEO Office, 3 dept leads)</td>
+      <td style="color:var(--grey);">1 week post</td>
+    </tr>
+    <tr>
+      <td>"Super-app" framing shift (Y/N)</td>
+      <td class="target-col">Yes</td>
+      <td>
+        <select style="background:var(--card);border:1px solid var(--green);color:var(--white);font-size:12px;padding:3px 6px;border-radius:3px;font-family:inherit;width:90px;" data-cat="strategic" data-target="text-yes" id="strategic-shift">
+          <option value="">—</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="partial">Partial</option>
+        </select>
+      </td>
+      <td class="rag-cell"><div class="rag" id="rag-strategic-3" style="background:var(--border);"></div></td>
+      <td style="color:var(--grey);">Comparative media analysis: "BNPL" vs "super-app" label % (30d pre vs post)</td>
+      <td style="color:var(--grey);">30 days post</td>
+    </tr>
+  </tbody>
+</table>
+<div class="notes-area" contenteditable="true">Strategic ROI notes: </div>
+
+<!-- Executive summary section -->
+<h2 style="margin-top:28px;">Executive Summary (auto-populated)</h2>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:20px 24px;" id="exec-summary">
+  <p style="color:var(--grey);font-style:italic;">Fill in actuals above to generate executive summary.</p>
+</div>
+
+<div style="margin-top:32px;font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:16px;">
+  Tamara Communications PMO · Post-Event ROI Dashboard · Framework 5 of 6 · Pre-agreed targets locked W12 · Actuals filled post-event
+</div>
+
+<script>
+// Set report date
+document.getElementById('report-date').textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+
+const categories = ['brand','commercial','operational','strategic'];
+const catCounts = {brand:5, commercial:5, operational:5, strategic:4};
+
+function ragColor(actual, target, mode) {
+  const a = parseFloat(actual);
+  const t = parseFloat(target);
+  if (isNaN(a)) return null;
+  if (mode === 'gte') {
+    if (a >= t) return 'green';
+    if (a >= t * 0.8) return 'amber';
+    return 'red';
+  } else if (mode === 'lte') {
+    if (a <= t) return 'green';
+    if (a <= t * 1.25) return 'amber';
+    return 'red';
+  }
+  return null;
+}
+
+function ragHex(status) {
+  if (status === 'green') return '#00A86B';
+  if (status === 'amber') return '#F5A623';
+  if (status === 'red') return '#EF4444';
+  return '#1E2D45';
+}
+
+function updateAll() {
+  const scores = {};
+  categories.forEach(cat => { scores[cat] = {green:0, amber:0, red:0, total:0}; });
+
+  // numeric inputs
+  document.querySelectorAll('.actual-input').forEach((inp, idx) => {
+    const cat = inp.dataset.cat;
+    const target = inp.dataset.target;
+    const mode = inp.dataset.mode;
+    if (!cat || !target || !mode) return;
+    const row = inp.closest('tr');
+    const ragIdx = Array.from(row.closest('tbody').rows).indexOf(row);
+    const ragEl = document.getElementById(`rag-${cat}-${ragIdx}`);
+    const status = ragColor(inp.value, target, mode);
+    if (ragEl) ragEl.style.background = ragHex(status);
+    if (status && cat) {
+      scores[cat][status]++;
+      scores[cat].total++;
+    }
+  });
+
+  // select for strategic shift
+  const shiftSel = document.getElementById('strategic-shift');
+  if (shiftSel) {
+    const val = shiftSel.value;
+    const ragEl = document.getElementById('rag-strategic-3');
+    if (ragEl) {
+      if (val === 'yes') ragEl.style.background = '#00A86B';
+      else if (val === 'partial') ragEl.style.background = '#F5A623';
+      else if (val === 'no') ragEl.style.background = '#EF4444';
+      else ragEl.style.background = '#1E2D45';
+    }
+    if (val === 'yes') { scores['strategic'].green++; scores['strategic'].total++; }
+    else if (val === 'partial') { scores['strategic'].amber++; scores['strategic'].total++; }
+    else if (val === 'no') { scores['strategic'].red++; scores['strategic'].total++; }
+  }
+
+  // Update summary cards
+  categories.forEach(cat => {
+    const s = scores[cat];
+    const scoreEl = document.getElementById(`${cat}-score`);
+    const statusEl = document.getElementById(`${cat}-status`);
+    if (!scoreEl || !statusEl) return;
+    if (s.total === 0) { scoreEl.textContent = '—'; statusEl.textContent = '—'; return; }
+    scoreEl.textContent = `${s.green}/${s.total}`;
+    if (s.red > 0) { statusEl.textContent = '● Needs attention'; statusEl.style.color = '#EF4444'; }
+    else if (s.amber > 0) { statusEl.textContent = '● On track'; statusEl.style.color = '#F5A623'; }
+    else { statusEl.textContent = '● Excellent'; statusEl.style.color = '#00A86B'; }
+  });
+
+  // Overall
+  const allGreen = Object.values(scores).reduce((a,s)=>a+s.green,0);
+  const allTotal = Object.values(scores).reduce((a,s)=>a+s.total,0);
+  const allRed = Object.values(scores).reduce((a,s)=>a+s.red,0);
+  const allAmber = Object.values(scores).reduce((a,s)=>a+s.amber,0);
+  const overallEl = document.getElementById('overall-status');
+  if (overallEl && allTotal > 0) {
+    if (allRed === 0 && allAmber === 0) {
+      overallEl.textContent = `● GREEN — ${allGreen}/${allTotal} metrics at or above target`;
+      overallEl.style.color = '#00A86B';
+    } else if (allRed === 0) {
+      overallEl.textContent = `● AMBER — ${allGreen}/${allTotal} at target, ${allAmber} within range`;
+      overallEl.style.color = '#F5A623';
+    } else {
+      overallEl.textContent = `● RED — ${allRed} metrics below target, immediate review required`;
+      overallEl.style.color = '#EF4444';
+    }
+    generateSummary(scores, allGreen, allTotal);
+  }
+}
+
+function generateSummary(scores, allGreen, allTotal) {
+  const el = document.getElementById('exec-summary');
+  if (!el || allTotal === 0) return;
+  const pct = Math.round(allGreen/allTotal*100);
+  el.innerHTML = `
+    <div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:12px;">Money 20/20 Middle East 2025 — PMO Post-Event Report Summary</div>
+    <div style="font-size:13px;color:var(--grey);line-height:1.8;">
+      <strong style="color:var(--white);">Overall performance:</strong> ${allGreen} of ${allTotal} metrics at or above pre-agreed targets (${pct}%).<br>
+      <strong style="color:var(--white);">Brand ROI:</strong> ${scores.brand.green}/${scores.brand.total} metrics on target. ${scores.brand.red > 0 ? '<span style="color:#EF4444;">'+scores.brand.red+' below target — see notes.</span>' : '<span style="color:#00A86B;">All green or amber.</span>'}<br>
+      <strong style="color:var(--white);">Commercial ROI:</strong> ${scores.commercial.green}/${scores.commercial.total} metrics on target. ${scores.commercial.red > 0 ? '<span style="color:#EF4444;">'+scores.commercial.red+' below target — pipeline review recommended.</span>' : '<span style="color:#00A86B;">All green or amber.</span>'}<br>
+      <strong style="color:var(--white);">Operational ROI:</strong> ${scores.operational.green}/${scores.operational.total} metrics on target. ${scores.operational.red > 0 ? '<span style="color:#EF4444;">'+scores.operational.red+' below target — operational review in Lessons Learned.</span>' : '<span style="color:#00A86B;">Event executed within operational parameters.</span>'}<br>
+      <strong style="color:var(--white);">Strategic ROI:</strong> ${scores.strategic.green}/${scores.strategic.total} metrics on target. ${scores.strategic.red > 0 ? '<span style="color:#EF4444;">'+scores.strategic.red+' below target — narrative/relationship review recommended.</span>' : '<span style="color:#00A86B;">Strategic objectives achieved.</span>'}<br>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:var(--grey);font-style:italic;">Full metric detail, notes, and recommendations in sections above. Lessons Learned session to be scheduled within 10 business days.</div>
+  `;
+}
+
+document.querySelectorAll('.actual-input').forEach(inp => inp.addEventListener('input', updateAll));
+document.getElementById('strategic-shift').addEventListener('change', updateAll);
+</script>
+</body>
+</html>
