@@ -11,7 +11,55 @@
     --card:#141B2D;--border:#1E2D45;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--bg);color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;min-height:100vh;padding:60px 80px;}
+  body{background:var(--bg);color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;min-height:100vh;}
+
+  /* ── PASSWORD GATE ─────────────────────────────────────────────────── */
+  #gate{
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;padding:40px;
+  }
+  .gate-box{
+    background:var(--card);border:1px solid var(--border);border-radius:8px;
+    padding:48px 52px;width:100%;max-width:440px;text-align:center;
+  }
+  .gate-logo{
+    font-size:11px;letter-spacing:3px;color:var(--grey);
+    text-transform:uppercase;margin-bottom:28px;
+  }
+  .gate-title{font-size:24px;font-weight:700;color:var(--white);margin-bottom:6px;}
+  .gate-sub{font-size:13px;color:var(--grey);margin-bottom:36px;line-height:1.6;}
+  .gate-label{
+    display:block;text-align:left;font-size:11px;letter-spacing:1px;
+    color:var(--grey);text-transform:uppercase;margin-bottom:8px;
+  }
+  .gate-input{
+    width:100%;background:var(--bg);border:1px solid var(--border);
+    border-radius:4px;padding:12px 16px;font-size:15px;color:var(--white);
+    font-family:'Carlito',Calibri,Arial,sans-serif;outline:none;
+    transition:border-color 0.15s;letter-spacing:2px;
+  }
+  .gate-input:focus{border-color:var(--green);}
+  .gate-input.error{border-color:#EF4444;animation:shake 0.3s ease;}
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    20%,60%{transform:translateX(-6px);}
+    40%,80%{transform:translateX(6px);}
+  }
+  .gate-btn{
+    margin-top:20px;width:100%;padding:13px;background:var(--green);
+    border:none;border-radius:4px;font-size:14px;font-weight:700;
+    color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;
+    cursor:pointer;letter-spacing:1px;transition:background 0.15s;
+  }
+  .gate-btn:hover{background:var(--dark-green);}
+  .gate-error{
+    margin-top:14px;font-size:12px;color:#EF4444;
+    min-height:18px;transition:opacity 0.2s;
+  }
+  .gate-footer{margin-top:32px;font-size:11px;color:var(--border);}
+
+  /* ── MAIN CONTENT ──────────────────────────────────────────────────── */
+  #main{display:none;padding:60px 80px;}
   h1{font-size:36px;font-weight:700;color:var(--green);margin-bottom:6px;}
   .meta{font-size:14px;color:var(--grey);margin-bottom:48px;line-height:1.8;}
   h2{font-size:14px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;}
@@ -30,75 +78,130 @@
 </head>
 <body>
 
-<div class="eyebrow">TAMARA PMO CASE STUDY — COMPLETE DELIVERABLE SET</div>
-<h1>Money 20/20 Middle East</h1>
-<div class="meta">
-  Founding Partner Sponsorship Operationalization &nbsp;·&nbsp; September 15–17, 2025, Riyadh<br>
-  Candidate: <strong style="color:var(--white);">Qadr Arslan</strong> &nbsp;·&nbsp; Role: PMO Senior Specialist — Communications &nbsp;·&nbsp; Interviewer: Tejas Jalan
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- PASSWORD GATE                                                         -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">Tamara · PMO Case Study</div>
+    <div class="gate-title">Access Required</div>
+    <div class="gate-sub">This deliverable set is confidential.<br>Enter the password to continue.</div>
+    <label class="gate-label" for="pwd">Password</label>
+    <input id="pwd" class="gate-input" type="password" placeholder="········" autocomplete="off" onkeydown="if(event.key==='Enter')unlock()"/>
+    <button class="gate-btn" onclick="unlock()">ENTER</button>
+    <div class="gate-error" id="gate-err"></div>
+    <div class="gate-footer">Qadr Arslan · PMO Senior Specialist — Communications</div>
+  </div>
 </div>
 
-<h2>Presentation Deck</h2>
-<div class="card-grid">
-  <a href="https://canva.link/xh6juka6uxmaoro" class="card" style="border-color:rgba(0,168,107,0.5);">
-    <div class="card-num">12 Slides </div>
-    <div class="card-title">Tamara PMO Case Study Deck</div>
-    <div class="card-desc">Full 12-slide presentation covering Tamara's strategic position, stakeholder strategy, operations, Gantt chart, in-event playbook, post-event framework, operating system, and ROI framework.</div>
-    <div class="card-tag tag-deck">→ Open Presentation</div>
-  </a>
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- MAIN CONTENT (hidden until password correct)                          -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div id="main">
+  <div class="eyebrow">TAMARA PMO CASE STUDY — COMPLETE DELIVERABLE SET</div>
+  <h1>Money 20/20 Middle East</h1>
+  <div class="meta">
+    Founding Partner Sponsorship Operationalization &nbsp;·&nbsp; September 15–17, 2025, Riyadh<br>
+    Candidate: <strong style="color:var(--white);">Qadr Arslan</strong> &nbsp;·&nbsp; Role: PMO Senior Specialist — Communications &nbsp;·&nbsp; Interviewer: Tejas Jalan
+  </div>
+
+  <h2>Presentation Deck</h2>
+  <div class="card-grid">
+    <a href="https://canva.link/xh6juka6uxmaoro" class="card" style="border-color:rgba(0,168,107,0.5);">
+      <div class="card-num">12 Slides</div>
+      <div class="card-title">Tamara PMO Case Study Deck</div>
+      <div class="card-desc">Full 12-slide presentation covering Tamara's strategic position, stakeholder strategy, operations, Gantt chart, in-event playbook, post-event framework, operating system, and ROI framework.</div>
+      <div class="card-tag tag-deck">→ Open Presentation</div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Framework Files — 6 of 6</h2>
+  <div class="card-grid">
+
+    <a href="Framework_1_Sponsorship_Evaluation_Scorecard.html" class="card">
+      <div class="card-num">Framework 1 of 6</div>
+      <div class="card-title">Sponsorship Evaluation Scorecard</div>
+      <div class="card-desc">7 weighted criteria · 1–5 scoring · Live weighted total · Tier recommendation (Founding / Strategic / Gold / Attend / Decline)</div>
+      <div class="card-tag tag-fw">Interactive Scorecard</div>
+    </a>
+
+    <a href="Framework_2_RACI_Master_Template.html" class="card">
+      <div class="card-num">Framework 2 of 6</div>
+      <div class="card-title">RACI Master Template</div>
+      <div class="card-desc">30 activities · 8 departments · R/A/C/I mapped · 7 workstream sections · Adapt to any sponsorship in 2 hours</div>
+      <div class="card-tag tag-fw">Reference Document</div>
+    </a>
+
+    <a href="Framework_3_12Week_Timeline_Template.html" class="card">
+      <div class="card-num">Framework 3 of 6</div>
+      <div class="card-title">12-Week Timeline Template</div>
+      <div class="card-desc">All 8 departments · Standard milestones · Critical deadline flags · Dependency chains · Gantt-style visual</div>
+      <div class="card-tag tag-fw">Timeline Template</div>
+    </a>
+
+    <a href="Framework_4_Announcement_Playbook.html" class="card">
+      <div class="card-num">Framework 4 of 6</div>
+      <div class="card-title">Announcement Playbook</div>
+      <div class="card-desc">5 phases · Decision to post-coverage · 15-minute Day-Of sequence · Checklist format · Tahaluf contact reference</div>
+      <div class="card-tag tag-fw">Checklist Playbook</div>
+    </a>
+
+    <a href="Framework_5_PostEvent_ROI_Dashboard.html" class="card">
+      <div class="card-num">Framework 5 of 6</div>
+      <div class="card-title">Post-Event ROI Dashboard</div>
+      <div class="card-desc">4 categories · 15 metrics · Pre-agreed targets · Live RAG status · Auto-generates executive summary</div>
+      <div class="card-tag tag-fw">Interactive Dashboard</div>
+    </a>
+
+    <a href="Framework_6_Lessons_Learned_Log.html" class="card">
+      <div class="card-num">Framework 6 of 6</div>
+      <div class="card-title">Lessons Learned Log</div>
+      <div class="card-desc">12 categories · Pre-loaded with Money 20/20 examples · Category filter · Stats panel · Add new entries · 90-min facilitation guide</div>
+      <div class="card-tag tag-fw">Interactive Log</div>
+    </a>
+
+  </div>
+
+  <div style="font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:20px;margin-top:8px;">
+    Total deliverables: 7 files (1 deck + 6 frameworks) &nbsp;·&nbsp; Tamara Communications PMO · Case Study: Money 20/20 Middle East 2025
+  </div>
 </div>
 
-<div class="divider"></div>
+<script>
+  var ATTEMPTS = 0;
 
-<h2>Framework Files — 6 of 6</h2>
-<div class="card-grid">
+  function unlock() {
+    var input = document.getElementById('pwd');
+    var err   = document.getElementById('gate-err');
+    var val   = input.value;
 
-  <a href="Framework_1_Sponsorship_Evaluation_Scorecard.html" class="card">
-    <div class="card-num">Framework 1 of 6</div>
-    <div class="card-title">Sponsorship Evaluation Scorecard</div>
-    <div class="card-desc">7 weighted criteria · 1–5 scoring · Live weighted total · Tier recommendation (Founding / Strategic / Gold / Attend / Decline)</div>
-    <div class="card-tag tag-fw">Interactive Scorecard</div>
-  </a>
+    if (val === 'qadr123') {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
+      return;
+    }
 
-  <a href="Framework_2_RACI_Master_Template.html" class="card">
-    <div class="card-num">Framework 2 of 6</div>
-    <div class="card-title">RACI Master Template</div>
-    <div class="card-desc">30 activities · 8 departments · R/A/C/I mapped · 7 workstream sections · Adapt to any sponsorship in 2 hours</div>
-    <div class="card-tag tag-fw">Reference Document</div>
-  </a>
+    // Wrong password
+    ATTEMPTS++;
+    input.value = '';
+    input.classList.remove('error');
+    void input.offsetWidth; // force reflow to restart animation
+    input.classList.add('error');
 
-  <a href="Framework_3_12Week_Timeline_Template.html" class="card">
-    <div class="card-num">Framework 3 of 6</div>
-    <div class="card-title">12-Week Timeline Template</div>
-    <div class="card-desc">All 8 departments · Standard milestones · Critical deadline flags · Dependency chains · Gantt-style visual</div>
-    <div class="card-tag tag-fw">Timeline Template</div>
-  </a>
+    if (ATTEMPTS >= 3) {
+      err.textContent = 'Incorrect password. Access denied.';
+      document.querySelector('.gate-btn').disabled = true;
+      document.querySelector('.gate-btn').style.opacity = '0.4';
+      input.disabled = true;
+    } else {
+      err.textContent = 'Incorrect password. Please try again.';
+    }
 
-  <a href="Framework_4_Announcement_Playbook.html" class="card">
-    <div class="card-num">Framework 4 of 6</div>
-    <div class="card-title">Announcement Playbook</div>
-    <div class="card-desc">5 phases · Decision to post-coverage · 15-minute Day-Of sequence · Checklist format · Tahaluf contact reference</div>
-    <div class="card-tag tag-fw">Checklist Playbook</div>
-  </a>
-
-  <a href="Framework_5_PostEvent_ROI_Dashboard.html" class="card">
-    <div class="card-num">Framework 5 of 6</div>
-    <div class="card-title">Post-Event ROI Dashboard</div>
-    <div class="card-desc">4 categories · 15 metrics · Pre-agreed targets · Live RAG status · Auto-generates executive summary</div>
-    <div class="card-tag tag-fw">Interactive Dashboard</div>
-  </a>
-
-  <a href="Framework_6_Lessons_Learned_Log.html" class="card">
-    <div class="card-num">Framework 6 of 6</div>
-    <div class="card-title">Lessons Learned Log</div>
-    <div class="card-desc">12 categories · Pre-loaded with Money 20/20 examples · Category filter · Stats panel · Add new entries · 90-min facilitation guide</div>
-    <div class="card-tag tag-fw">Interactive Log</div>
-  </a>
-
-</div>
-
-<div style="font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:20px;margin-top:8px;">
-  Total deliverables: 7 files (1 deck + 6 frameworks) &nbsp;·&nbsp; Tamara Communications PMO · Case Study: Money 20/20 Middle East 2025
-</div>
+    input.focus();
+  }
+</script>
 
 </body>
 </html>
