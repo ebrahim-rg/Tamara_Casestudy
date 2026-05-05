@@ -17,56 +17,8 @@
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;min-height:100vh;}
 
-  /* ── PASSWORD GATE ─────────────────────────────────────────────────── */
-  #gate{
-    display:flex;align-items:center;justify-content:center;
-    min-height:100vh;padding:40px;
-  }
-  .gate-box{
-    background:var(--card);border:1px solid var(--border);border-radius:8px;
-    padding:48px 52px;width:100%;max-width:440px;text-align:center;
-  }
-  .gate-logo{
-    font-size:11px;letter-spacing:3px;color:var(--grey);
-    text-transform:uppercase;margin-bottom:28px;
-  }
-  .gate-title{font-size:24px;font-weight:700;color:var(--white);margin-bottom:6px;}
-  .gate-sub{font-size:13px;color:var(--grey);margin-bottom:36px;line-height:1.6;}
-  .gate-label{
-    display:block;text-align:left;font-size:11px;letter-spacing:1px;
-    color:var(--grey);text-transform:uppercase;margin-bottom:8px;
-  }
-  .gate-input{
-    width:100%;background:var(--bg);border:1px solid var(--border);
-    border-radius:4px;padding:12px 16px;font-size:15px;color:var(--white);
-    font-family:'Carlito',Calibri,Arial,sans-serif;outline:none;
-    transition:border-color 0.15s;letter-spacing:2px;
-  }
-  .gate-input:focus{border-color:var(--green);}
-  .gate-input.error{border-color:#EF4444;animation:shake 0.3s ease;}
-  @keyframes shake{
-    0%,100%{transform:translateX(0);}
-    20%,60%{transform:translateX(-6px);}
-    40%,80%{transform:translateX(6px);}
-  }
-  .gate-btn{
-    margin-top:20px;width:100%;padding:13px;background:var(--green);
-    border:none;border-radius:4px;font-size:14px;font-weight:700;
-    color:var(--white);font-family:'Carlito',Calibri,Arial,sans-serif;
-    cursor:pointer;letter-spacing:1px;transition:background 0.15s;
-  }
-  .gate-btn:hover{background:var(--dark-green);}
-  .gate-error{
-    margin-top:14px;font-size:12px;color:#EF4444;
-    min-height:18px;transition:opacity 0.2s;
-  }
-  .gate-footer{margin-top:32px;font-size:11px;color:var(--border);}
-  .gate-hero{margin:-48px -52px 0 -52px;border-radius:6px 6px 0 0;overflow:hidden;background:#0D1220;}
-  .gate-img{width:100%;display:block;object-fit:cover;}
-  .gate-divider{width:100%;height:1px;background:var(--border);margin:28px 0 24px;}
-
   /* ── MAIN CONTENT ──────────────────────────────────────────────────── */
-  #main{display:none;padding:60px 80px;}
+  #main{display:block;padding:60px 80px;}
   h1{font-size:36px;font-weight:700;color:var(--green);margin-bottom:6px;}
   .meta{font-size:14px;color:var(--grey);margin-bottom:48px;line-height:1.8;}
   h2{font-size:14px;font-weight:700;color:var(--grey);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;}
@@ -86,25 +38,7 @@
 <body>
 
 <!-- ══════════════════════════════════════════════════════════════════════ -->
-<!-- PASSWORD GATE                                                         -->
-<!-- ══════════════════════════════════════════════════════════════════════ -->
-<div id="gate" style="display:none;">
-  <div class="gate-box">
-    <div class="gate-hero">
-    </div>
-    <div class="gate-divider"></div>
-    <div class="gate-title">Access Required</div>
-    <div class="gate-sub">This deliverable set is confidential.<br>Enter the password to continue.</div>
-    <label class="gate-label" for="pwd">Password</label>
-    <input id="pwd" class="gate-input" type="password" placeholder="········" autocomplete="off" onkeydown="if(event.key==='Enter')unlock()"/>
-    <button class="gate-btn" onclick="unlock()">ENTER</button>
-    <div class="gate-error" id="gate-err"></div>
-    <div class="gate-footer">Qadr Arslan · PMO Senior Specialist — Communications</div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════════════════ -->
-<!-- MAIN CONTENT (hidden until password correct)                          -->
+<!-- MAIN CONTENT                                                          -->
 <!-- ══════════════════════════════════════════════════════════════════════ -->
 <div id="main">
   <div class="eyebrow">TAMARA PMO CASE STUDY — COMPLETE DELIVERABLE SET</div>
@@ -117,7 +51,7 @@
   <h2>Presentation Deck & Video</h2>
   <div class="card-grid">
     
-    <a href="https://github.com/ebrahim-rg/Tamara_Casestudy/releases/download/v2/Tamara.Case.Study_Qadr.Arslan.1.pptx"download="Tamara.Case.Study_Qadr.Arslan.pptx"class="card" style="border-color:rgba(0,168,107,0.5);">
+    <a href="https://github.com/ebrahim-rg/Tamara_Casestudy/releases/download/v2/Tamara.Case.Study_Qadr.Arslan.1.pptx" download="Tamara.Case.Study_Qadr.Arslan.pptx" class="card" style="border-color:rgba(0,168,107,0.5);">
       <div class="card-num">12 Slides</div>
       <div class="card-title">Tamara PMO Case Study Deck</div>
       <div class="card-desc">Full 12-slide presentation covering Tamara's strategic position, stakeholder strategy, operations, Gantt chart, in-event playbook, post-event framework, operating system, and ROI framework.</div>
@@ -185,40 +119,6 @@
     Total deliverables: 7 files (1 deck + 1 video + 6 frameworks) &nbsp;·&nbsp; Tamara Communications PMO · Case Study: Money 20/20 Middle East 2025
   </div>
 </div>
-
-<script>
-  var ATTEMPTS = 0;
-
-  function unlock() {
-    var input = document.getElementById('pwd');
-    var err   = document.getElementById('gate-err');
-    var val   = input.value;
-
-    if (val === 'qadr123') {
-      document.getElementById('gate').style.display = 'none';
-      document.getElementById('main').style.display = 'block';
-      return;
-    }
-
-    // Wrong password
-    ATTEMPTS++;
-    input.value = '';
-    input.classList.remove('error');
-    void input.offsetWidth; // force reflow to restart animation
-    input.classList.add('error');
-
-    if (ATTEMPTS >= 3) {
-      err.textContent = 'Incorrect password. Access denied.';
-      document.querySelector('.gate-btn').disabled = true;
-      document.querySelector('.gate-btn').style.opacity = '0.4';
-      input.disabled = true;
-    } else {
-      err.textContent = 'Incorrect password. Please try again.';
-    }
-
-    input.focus();
-  }
-</script>
 
 </body>
 </html>
