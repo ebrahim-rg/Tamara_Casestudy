@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Framework 5 — Post-Event ROI Dashboard</title>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -41,10 +42,33 @@
   .summary-label{font-size:12px;color:var(--grey);}
   .summary-status{font-size:14px;font-weight:700;margin-top:4px;}
   .notes-area{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 12px;font-size:12px;color:var(--grey);font-style:italic;margin-top:6px;min-height:36px;}
+
+  /* ── RESPONSIVE ────────────────────────────────────────────────────── */
+  @media(max-width:900px){
+    body{padding:28px 20px;}
+    /* wide data tables scroll sideways instead of crushing their columns */
+    table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  }
+  @media(max-width:640px){
+    body{padding:22px 14px;}
+    h1{font-size:21px;line-height:1.25;}
+    h2{font-size:15px;}
+    .sub{font-size:12px;margin-bottom:20px;}
+    .instruction{padding:13px 15px;font-size:12.5px;}
+    .tier-card,.stat-card,.metric-card{min-width:0;flex:1 1 100%;}
+    .result-box{display:block;padding:16px 18px;}
+    /* the 4-across summary row is an inline style, so override it by shape */
+    div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important;gap:10px!important;}
+    .summary-card{padding:14px 16px;}
+    .summary-score{font-size:26px;}
+  }
+  @media(max-width:420px){
+    div[style*="repeat(4,1fr)"]{grid-template-columns:1fr!important;}
+  }
 </style>
 </head>
 <body>
-  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#141B2D;border:1px solid #1E2D45;border-radius:4px;padding:8px 16px;font-size:13px;color:#8A9BB0;font-family:'Carlito',Calibri,Arial,sans-serif;margin-bottom:24px;transition:border-color 0.15s;position:sticky;top:0;z-index:100;" onmouseover="this.style.borderColor='#00A86B';this.style.color='#FFFFFF'" onmouseout="this.style.borderColor='#1E2D45';this.style.color='#8A9BB0'">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#141B2D;border:1px solid #1E2D45;border-radius:4px;padding:8px 16px;font-size:13px;color:#8A9BB0;font-family:'Carlito',Calibri,Arial,sans-serif;margin-bottom:24px;transition:border-color 0.15s;position:sticky;top:0;z-index:100;" onmouseover="this.style.borderColor='#00A86B';this.style.color='#FFFFFF'" onmouseout="this.style.borderColor='#1E2D45';this.style.color='#8A9BB0'">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
     Back to all deliverables
   </a>
