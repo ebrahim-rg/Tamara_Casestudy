@@ -125,13 +125,17 @@
 <!-- VISITOR NAME PROMPT                                                   -->
 <!-- ══════════════════════════════════════════════════════════════════════ -->
 <style>
-  /* Soft slide-in card, bottom-right. Never blocks the page. */
-  #ncCard{position:fixed;right:24px;bottom:24px;width:330px;max-width:calc(100vw - 32px);
-    background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px 22px 18px;
-    box-shadow:0 12px 40px rgba(0,0,0,0.55);z-index:900;
-    opacity:0;transform:translateY(14px);transition:opacity .35s ease,transform .35s ease;}
-  #ncCard.nc-in{opacity:1;transform:translateY(0);}
-  #ncCard.nc-out{opacity:0;transform:translateY(14px);pointer-events:none;}
+  /* Centered overlay. Dimmed backdrop, dismissable by click / Esc / Skip. */
+  #ncWrap{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center;
+    padding:24px;background:rgba(5,8,15,0.78);
+    opacity:0;transition:opacity .3s ease;}
+  #ncWrap.nc-show{display:flex;}
+  #ncWrap.nc-in{opacity:1;}
+  #ncCard{position:relative;width:380px;max-width:100%;
+    background:var(--card);border:1px solid var(--border);border-radius:8px;padding:26px 28px 22px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    transform:translateY(12px) scale(.985);transition:transform .3s ease;}
+  #ncWrap.nc-in #ncCard{transform:translateY(0) scale(1);}
   .nc-x{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--grey);
     font-size:20px;line-height:1;cursor:pointer;padding:4px 6px;border-radius:4px;font-family:inherit;}
   .nc-x:hover{color:var(--white);background:rgba(255,255,255,0.06);}
@@ -170,25 +174,28 @@
     cursor:pointer;text-decoration:none;}
   .nc-panel a.nc-btn:hover,.nc-panel button.nc-btn:hover{border-color:var(--green);color:var(--white);}
   @media(max-width:600px){
-    #ncCard{right:12px;left:12px;bottom:12px;width:auto;}
+    #ncWrap{padding:16px;}
+    #ncCard{width:100%;padding:22px 20px 18px;}
   }
 </style>
 
-<div id="ncCard" hidden>
-  <button class="nc-x" type="button" aria-label="Dismiss">&times;</button>
-  <div class="nc-eyebrow">Before you browse</div>
-  <div id="ncAsk">
-    <div class="nc-title">What&rsquo;s your name?</div>
-    <div class="nc-sub">Entirely optional &mdash; it just helps me know who&rsquo;s taken a look.</div>
-    <form id="ncForm" autocomplete="off">
-      <input id="ncInput" type="text" placeholder="Your name" autocomplete="name" maxlength="80"/>
-      <div class="nc-row">
-        <button type="submit" class="nc-go">Continue</button>
-        <button type="button" class="nc-skip">Skip</button>
-      </div>
-    </form>
+<div id="ncWrap" role="dialog" aria-modal="true" aria-labelledby="ncHeading">
+  <div id="ncCard">
+    <button class="nc-x" type="button" aria-label="Dismiss">&times;</button>
+    <div class="nc-eyebrow">Before you browse</div>
+    <div id="ncAsk">
+      <div class="nc-title" id="ncHeading">What&rsquo;s your name?</div>
+      <div class="nc-sub">Entirely optional &mdash; it just helps me know who&rsquo;s taken a look.</div>
+      <form id="ncForm" autocomplete="off">
+        <input id="ncInput" type="text" placeholder="Your name" autocomplete="name" maxlength="80"/>
+        <div class="nc-row">
+          <button type="submit" class="nc-go">Continue</button>
+          <button type="button" class="nc-skip">Skip</button>
+        </div>
+      </form>
+    </div>
+    <div id="ncThanks" class="nc-done" hidden>Thanks &mdash; enjoy the deliverables.</div>
   </div>
-  <div id="ncThanks" class="nc-done" hidden>Thanks &mdash; enjoy the deliverables.</div>
 </div>
 
 <div id="ncLog">
@@ -218,6 +225,7 @@
   var LOG_KEY  = 'tamara_visitor_log';
   var DELAY_MS = 1400;
 
+  var wrap   = document.getElementById('ncWrap');
   var card   = document.getElementById('ncCard');
   var form   = document.getElementById('ncForm');
   var input  = document.getElementById('ncInput');
@@ -261,17 +269,20 @@
   }
 
   function show(){
-    card.hidden = false;
+    wrap.classList.add('nc-show');
+    document.body.style.overflow = 'hidden';
     /* next frame, so the transition actually runs */
-    requestAnimationFrame(function(){ card.classList.add('nc-in'); });
-    setTimeout(function(){ safe(function(){ input.focus(); }); }, 380);
+    requestAnimationFrame(function(){ wrap.classList.add('nc-in'); });
+    setTimeout(function(){ safe(function(){ input.focus(); }); }, 330);
   }
 
   function hide(){
-    card.classList.remove('nc-in');
-    card.classList.add('nc-out');
-    setTimeout(function(){ card.hidden = true; }, 350);
+    wrap.classList.remove('nc-in');
+    document.body.style.overflow = '';
+    setTimeout(function(){ wrap.classList.remove('nc-show'); }, 300);
   }
+
+  function isOpen(){ return wrap.classList.contains('nc-show'); }
 
   function dismiss(){ markSeen(); hide(); }
 
@@ -289,10 +300,15 @@
   card.querySelector('.nc-skip').addEventListener('click', dismiss);
   card.querySelector('.nc-x').addEventListener('click', dismiss);
 
+  /* click the dimmed backdrop, but not the card itself */
+  wrap.addEventListener('click', function(e){
+    if (e.target === wrap) dismiss();
+  });
+
   document.addEventListener('keydown', function(e){
     if (e.key !== 'Escape') return;
     if (overlay.classList.contains('nc-open')) { closeOverlay(); return; }
-    if (!card.hidden) dismiss();
+    if (isOpen()) dismiss();
   });
 
   /* ── Footer log viewer ───────────────────────────────────────────── */
@@ -351,7 +367,6 @@
     ask.hidden = false;
     thanks.hidden = true;
     input.value = '';
-    card.classList.remove('nc-out');
     show();
   });
 
