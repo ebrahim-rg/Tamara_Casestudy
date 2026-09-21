@@ -116,9 +116,249 @@
   </div>
 
   <div style="font-size:12px;color:var(--grey);border-top:1px solid var(--border);padding-top:20px;margin-top:8px;">
-    Total deliverables: 7 files (1 deck + 1 video + 6 frameworks) &nbsp;·&nbsp; Tamara Communications PMO · Case Study: Money 20/20 Middle East 2025
+    Total deliverables: 7 files (1 deck + 1 video + 6 frameworks) &nbsp;·&nbsp; Tamara Communications PMO · Case Study: Money 20/20 Middle East 2025<a href="#" id="ncOpenLog" class="nc-loglink" title="Visitor log">·</a>
   </div>
 </div>
 
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- VISITOR NAME PROMPT                                                   -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<style>
+  /* Soft slide-in card, bottom-right. Never blocks the page. */
+  #ncCard{position:fixed;right:24px;bottom:24px;width:330px;max-width:calc(100vw - 32px);
+    background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px 22px 18px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.55);z-index:900;
+    opacity:0;transform:translateY(14px);transition:opacity .35s ease,transform .35s ease;}
+  #ncCard.nc-in{opacity:1;transform:translateY(0);}
+  #ncCard.nc-out{opacity:0;transform:translateY(14px);pointer-events:none;}
+  .nc-x{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--grey);
+    font-size:20px;line-height:1;cursor:pointer;padding:4px 6px;border-radius:4px;font-family:inherit;}
+  .nc-x:hover{color:var(--white);background:rgba(255,255,255,0.06);}
+  .nc-eyebrow{font-size:10px;color:var(--grey);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;}
+  .nc-title{font-size:17px;font-weight:700;color:var(--white);margin-bottom:5px;}
+  .nc-sub{font-size:12.5px;color:var(--grey);line-height:1.5;margin-bottom:14px;}
+  #ncInput{width:100%;background:#0D1424;border:1px solid var(--border);border-radius:5px;
+    padding:9px 11px;color:var(--white);font-family:inherit;font-size:14px;outline:none;transition:border-color .15s;}
+  #ncInput:focus{border-color:var(--green);}
+  #ncInput::placeholder{color:#4F5E75;}
+  .nc-row{display:flex;gap:8px;align-items:center;margin-top:12px;}
+  .nc-go{background:var(--green);color:#04180F;border:none;border-radius:5px;padding:8px 18px;
+    font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s;}
+  .nc-go:hover{background:#00C47C;}
+  .nc-skip{background:none;border:none;color:var(--grey);font-family:inherit;font-size:12.5px;
+    cursor:pointer;padding:8px 6px;text-decoration:underline;text-underline-offset:3px;}
+  .nc-skip:hover{color:var(--white);}
+  .nc-done{font-size:13.5px;color:var(--green);}
+  /* Footer log link — discreet but findable */
+  .nc-loglink{color:#2A3A52;text-decoration:none;cursor:pointer;padding:0 5px;}
+  .nc-loglink:hover{color:var(--grey);}
+  /* Log viewer overlay */
+  #ncLog{position:fixed;inset:0;background:rgba(5,8,15,0.82);z-index:950;display:none;
+    align-items:center;justify-content:center;padding:24px;}
+  #ncLog.nc-open{display:flex;}
+  .nc-panel{background:var(--card);border:1px solid var(--border);border-radius:8px;
+    width:560px;max-width:100%;max-height:80vh;overflow:auto;padding:26px 28px;}
+  .nc-panel h3{font-size:15px;color:var(--green);margin-bottom:6px;}
+  .nc-panel .nc-note{font-size:12px;color:var(--grey);line-height:1.6;margin-bottom:18px;}
+  .nc-entry{border-top:1px solid var(--border);padding:10px 0;font-size:13px;}
+  .nc-entry b{color:var(--white);}
+  .nc-entry span{color:var(--grey);font-size:11.5px;display:block;margin-top:2px;}
+  .nc-panel .nc-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+  .nc-panel a.nc-btn,.nc-panel button.nc-btn{background:none;border:1px solid var(--border);
+    color:var(--grey);border-radius:5px;padding:7px 14px;font-family:inherit;font-size:12px;
+    cursor:pointer;text-decoration:none;}
+  .nc-panel a.nc-btn:hover,.nc-panel button.nc-btn:hover{border-color:var(--green);color:var(--white);}
+  @media(max-width:600px){
+    #ncCard{right:12px;left:12px;bottom:12px;width:auto;}
+  }
+</style>
+
+<div id="ncCard" hidden>
+  <button class="nc-x" type="button" aria-label="Dismiss">&times;</button>
+  <div class="nc-eyebrow">Before you browse</div>
+  <div id="ncAsk">
+    <div class="nc-title">What&rsquo;s your name?</div>
+    <div class="nc-sub">Entirely optional &mdash; it just helps me know who&rsquo;s taken a look.</div>
+    <form id="ncForm" autocomplete="off">
+      <input id="ncInput" type="text" placeholder="Your name" autocomplete="name" maxlength="80"/>
+      <div class="nc-row">
+        <button type="submit" class="nc-go">Continue</button>
+        <button type="button" class="nc-skip">Skip</button>
+      </div>
+    </form>
+  </div>
+  <div id="ncThanks" class="nc-done" hidden>Thanks &mdash; enjoy the deliverables.</div>
+</div>
+
+<div id="ncLog">
+  <div class="nc-panel">
+    <h3>Visitor log</h3>
+    <div class="nc-note">
+      Entries below were recorded <strong>in this browser only</strong>. Names submitted by other
+      people are delivered to your Formspree inbox &mdash; open it with the button below.
+    </div>
+    <div id="ncEntries"></div>
+    <div class="nc-actions">
+      <a class="nc-btn" href="https://formspree.io/forms" target="_blank" rel="noopener">Open Formspree inbox &rarr;</a>
+      <button class="nc-btn" type="button" id="ncReset">Reset prompt on this browser</button>
+      <button class="nc-btn" type="button" id="ncClose">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* Submitted names are POSTed here and land in the Formspree inbox.
+     A copy is also kept in the visitor's own browser, so a blocked or
+     offline request never loses the entry on their end. */
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xaenedbo';
+
+  var SEEN_KEY = 'tamara_visitor_seen';
+  var LOG_KEY  = 'tamara_visitor_log';
+  var DELAY_MS = 1400;
+
+  var card   = document.getElementById('ncCard');
+  var form   = document.getElementById('ncForm');
+  var input  = document.getElementById('ncInput');
+  var ask    = document.getElementById('ncAsk');
+  var thanks = document.getElementById('ncThanks');
+
+  /* localStorage throws in private mode / blocked-cookie contexts */
+  function safe(fn, fallback){ try { return fn(); } catch(e){ return fallback; } }
+
+  function readLog(){
+    return safe(function(){
+      return JSON.parse(localStorage.getItem(LOG_KEY) || '[]');
+    }, []);
+  }
+
+  function writeLog(entry){
+    safe(function(){
+      var log = readLog();
+      log.push(entry);
+      localStorage.setItem(LOG_KEY, JSON.stringify(log.slice(-50)));
+    });
+  }
+
+  function markSeen(){ safe(function(){ localStorage.setItem(SEEN_KEY, '1'); }); }
+
+  function send(name){
+    var entry = {
+      name: name,
+      submitted_at: new Date().toISOString(),
+      page: location.pathname,
+      referrer: document.referrer || '(direct)'
+    };
+    writeLog(entry);
+    safe(function(){
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(entry)
+      })['catch'](function(){ /* offline or blocked — local copy already kept */ });
+    });
+  }
+
+  function show(){
+    card.hidden = false;
+    /* next frame, so the transition actually runs */
+    requestAnimationFrame(function(){ card.classList.add('nc-in'); });
+    setTimeout(function(){ safe(function(){ input.focus(); }); }, 380);
+  }
+
+  function hide(){
+    card.classList.remove('nc-in');
+    card.classList.add('nc-out');
+    setTimeout(function(){ card.hidden = true; }, 350);
+  }
+
+  function dismiss(){ markSeen(); hide(); }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = input.value.trim();
+    markSeen();
+    if (!name) { hide(); return; }
+    send(name);
+    ask.hidden = true;
+    thanks.hidden = false;
+    setTimeout(hide, 1600);
+  });
+
+  card.querySelector('.nc-skip').addEventListener('click', dismiss);
+  card.querySelector('.nc-x').addEventListener('click', dismiss);
+
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Escape') return;
+    if (overlay.classList.contains('nc-open')) { closeOverlay(); return; }
+    if (!card.hidden) dismiss();
+  });
+
+  /* ── Footer log viewer ───────────────────────────────────────────── */
+  var overlay   = document.getElementById('ncLog');
+  var entriesEl = document.getElementById('ncEntries');
+
+  function renderLog(){
+    var log = readLog();
+    entriesEl.innerHTML = '';
+    if (!log.length) {
+      var empty = document.createElement('div');
+      empty.className = 'nc-entry';
+      empty.style.color = '#8A9BB0';
+      empty.textContent = 'No names recorded in this browser yet.';
+      entriesEl.appendChild(empty);
+      return;
+    }
+    log.slice().reverse().forEach(function(e){
+      var d = document.createElement('div');
+      d.className = 'nc-entry';
+      var b = document.createElement('b');
+      b.textContent = e.name;
+      var s = document.createElement('span');
+      s.textContent = new Date(e.submitted_at).toLocaleString() + '  ·  from ' + e.referrer;
+      d.appendChild(b);
+      d.appendChild(s);
+      entriesEl.appendChild(d);
+    });
+  }
+
+  document.getElementById('ncOpenLog').addEventListener('click', function(e){
+    e.preventDefault();
+    renderLog();
+    openOverlay();
+  });
+
+  function openOverlay(){
+    overlay.classList.add('nc-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeOverlay(){
+    overlay.classList.remove('nc-open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('ncClose').addEventListener('click', closeOverlay);
+
+  overlay.addEventListener('click', function(e){
+    if (e.target === overlay) closeOverlay();
+  });
+
+  document.getElementById('ncReset').addEventListener('click', function(){
+    safe(function(){ localStorage.removeItem(SEEN_KEY); });
+    closeOverlay();
+    ask.hidden = false;
+    thanks.hidden = true;
+    input.value = '';
+    card.classList.remove('nc-out');
+    show();
+  });
+
+  /* ── Trigger ─────────────────────────────────────────────────────── */
+  var alreadySeen = safe(function(){ return localStorage.getItem(SEEN_KEY) === '1'; }, false);
+  if (!alreadySeen) setTimeout(show, DELAY_MS);
+})();
+</script>
 </body>
 </html>
